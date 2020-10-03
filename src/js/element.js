@@ -33,7 +33,6 @@ class Element extends THREE.Object3D {
         obj.mesh.position.set(x,y,z);
         obj.add(mesh);
     }
-    /*Fiquei por aqui*/ 
 
     changeWireframe() {
         this.material.wireframe = !this.material.wireframe;

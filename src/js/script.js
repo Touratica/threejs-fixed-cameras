@@ -1,6 +1,6 @@
 /*global THREE*/
 
-var camera = [] , currentCamera =0;
+var camera,FrontalCamera, TopCamera, LateralCamera;
 var scene, renderer;
 
 //let distance = 5;
@@ -54,6 +54,13 @@ function createScene() {
 	scene = new THREE.Scene();
 
 	scene.add(new THREE.AxesHelper(20));
+	/* so para clarificar : 
+	eixo cor azul = eixo dos xx
+	eixo cor vermelha = eixo dos yy 
+	eixo cor verde = eixo dos zz , Bom afinal não sei se é bem assim.. vi em outros projetos, quando
+	a camera está em (0,100,0) isto dá uma vista de cima em vez de lado como se fosse dos yy... 
+	estou confusa mas o verde é pelo menos sempre o zz , por tanto maybe depois alterar os nomes
+	das variaveis porque o Topcamera nao dá supostamente a vista de cima, mas sim o 3 é que da*/
 
 	//createMobile(0,0,0); /*Acho melhor criar uma classe chamada Mobile, dps faz-se new Mobile*/
 	
@@ -70,15 +77,11 @@ function animate() {
 	requestAnimationFrame(animate);
 }
 
-/*function render() {
-	'use strict';
-	renderer.render(scene, camera);
-	
-}*/
+
 
 function render() {
 	'use strict';
-    renderer.render(scene, camera[currentCamera]);
+	renderer.render(scene, camera);  
 }
 
 function __init__() {
@@ -91,9 +94,10 @@ function __init__() {
 	document.body.appendChild(renderer.domElement);
 
 	createScene();
-	camera[0]= createCamera(100,0,0); //view from x
-	camera[1]=createCamera(0,0,100); //view from z
-	camera[2]= createCamera(0,100,0); //view from y
+	FrontalCamera = createCamera(100,0,0);  //view from x
+	TopCamera= createCamera(0,0,100); //view from z
+	LateralCamera = createCamera(0,100,0); //view from y
+
 	render();
 	window.addEventListener("keydown",onKeyDown);
 }
@@ -102,15 +106,15 @@ function onKeyDown(e) {
     switch (e.keyCode) {
 
         case 49: //1
-            currentCamera = 0;
+			camera= FrontalCamera;
             break;
 
         case 50: //2
-            currentCamera = 1;
+			camera=TopCamera;
             break;
 
         case 51:  //3
-            currentCamera = 2;
+			camera=LateralCamera;
             break;
 
         case 52: //4
