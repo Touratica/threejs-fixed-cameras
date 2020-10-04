@@ -12,7 +12,7 @@ class Element extends THREE.Object3D {
     addParallelepipedVertical(obj, x, y, z, w, h, d) {
         var geometry = new THREE.CubeGeometry(w, h, d);
         geometry.rotateX(Math.PI/2); /*verificar estas contas...*/ 
-        obj.mesh = new THREE.Mesh(geometry,obj.material);
+        obj.mesh = new THREE.Mesh(geometry,obj.material); 
         obj.mesh.position.set(x, y, z);
         obj.add(obj.mesh);
     }
