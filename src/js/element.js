@@ -22,16 +22,16 @@ class Element extends THREE.Object3D {
         geometry.rotateX(Math.PI/2);
         obj.mesh = new THREE.Mesh(geometry,obj.material);
         obj.mesh.position.set(x,y,z);
-        obj.add(mesh);
+        obj.add(obj.mesh);
     
     }
     
     addCylinderHorizontal(obj,x,y,z,base,height){
     
         var geometry = new THREE.CylinderGeometry( base, base, height, 64 );
-        obj.mesh = new THREE.Mesh(geometry,material); /*funciona msm assim ou sera que precisa de rot?*/
+        obj.mesh = new THREE.Mesh(geometry,obj.material); /*funciona msm assim ou sera que precisa de rot?*/
         obj.mesh.position.set(x,y,z);
-        obj.add(mesh);
+        obj.add(obj.mesh);
     }
 
     changeWireframe() {

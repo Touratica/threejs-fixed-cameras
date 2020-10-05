@@ -1,21 +1,31 @@
 class Mobile extends Element {
 
  	constructor(x, y, z) {
- 		super(x, y, z);
- 		this.mobileBaseMovement= 0;
+         super(x, y, z);
+        this.baseMovement=0;
+ 		this.mobileMoving= 0;
         this.branchOneRotation = 0;
         this.branchTwoRotation=0;
         this.brancThreeRotation = 0;
        
 	 }
 
-	getMobileBaseMovement(){
-		return this.mobileBaseMovement;
+
+     getBaseMovement(){
+		return this.baseMovement;
 	}
 
- 	setMobileBaseMovement(mobileBaseMovement) {
- 		this.mobileBaseMovement = mobileBaseMovement;
+ 	setBaseMovement(baseMovement) {
+ 		this.baseMovement = baseMovement;
      }
+    
+    getMobileMoving()
+    {
+        return this.mobileMoving;
+    }
+     setMobileMoving(move) {
+        this.move = move;
+    }
     getBranchOneRotation()
     {
         return this.branchOneRotation();
@@ -45,6 +55,7 @@ class Mobile extends Element {
 
     rotateBranchOne(angle) {
         branchOne.rotateOnWorldAxis(new THREE.Vector3(0,0,1),angle); //vector (0,0,1) roda em torno dos z, penso, com angulo de 0 graus.
+        //this.translateX(velocity);
     }
     rotateBranchTwo(angle) {
         branchTwo.rotateOnWorldAxis(new THREE.Vector3(0,0,1),angle); //vector (0,0,1) roda em torno dos z, penso, com angulo de 0 graus.
@@ -65,14 +76,15 @@ class Mobile extends Element {
         });
 
         branchOne = new THREE.Group();
-        brancTwo = new THREE.Group();
+        branchTwo = new THREE.Group();
         branchThree = new THREE.Group();
 
         branchOne.material = obj.material;
-        brancTwo.material = obj.material;
-        brancThree.material = obj.material;
+        branchTwo.material = obj.material;
+        branchThree.material = obj.material;
 
         //ramo 1
+        /*Linhas de codigo sem comentario sao arames*/
         obj.addCylinderVertical(branchOne,0,0,0,0.1,5); 
         obj.addCylinderHorizontal(branchOne,0,0,-5,0.1,6);
         obj.addCylinderVertical(branchOne,0,-3,-5,2,1); //Cilindro 1
@@ -90,12 +102,36 @@ class Mobile extends Element {
         obj.addCylinderVertical(branchOne,0,4,-11.5,0.1,1);
         obj.addCylinderHorizontal(branchOne,0,5,-12,0.1,4);
         obj.addCylinderVertical(branchOne,0,3,-12,1,1); //cilindro 5
-        /* Ramo 1 concluido */
-
-        /* Continuar ramo2 e ramo3*/
 
 
-        /*Adicionar translacoes e rotacoes? */ 
+        //ramo 2
+        obj.addCylinderVertical(branchTwo,0,4,-12,0.1,2);
+        obj.addCylinderHorizontal(branchTwo,0,3.5,-13,0.1,5);
+        obj.addParallelepipedVertical(branchTwo,0,0.5,-13,1,1,1);//quadrado 6
+        obj.addCylinderVertical(branchTwo,0,6,-14,0.1,2);
+        obj.addCylinderHorizontal(branchTwo,0,6.5,-15,0.1,9);
+        obj.addCylinderHorizontal(branchTwo,0,1.5,-15,1,1); //cilindro 7
+        obj.addCylinderVertical(branchTwo,0,11,-16,0.1,2);
+        obj.addCylinderHorizontal(branchTwo,0,9.5,-17,0.1,7);
+        obj.addCylinderHorizontal(branchTwo,0,14,-17,3,2); //cilindro 8
+
+        //ramo 3
+        obj.addCylinderVertical(branchThree,0,6,-18,0.1,2);
+        obj.addCylinderHorizontal(branchThree,0,6,-19,0.1,4);
+        obj.addCylinderHorizontal(branchThree,0,3.5,-18,1,1); //cilindro 9
+        obj.addParallelepipedVertical(branchThree,0,8.5,-18,1,1,1);//quadrado 10
+
+        /*Adicionar translacoes e rotacoes? 
+        ramo1.translateY();*/
+
+        obj.add(branchOne);
+        obj.add(branchTwo);
+        obj.add(branchThree);
+ 		scene.add(obj);
+        
+        obj.position.x = x;
+ 		obj.position.y = y;
+ 		obj.position.z = z;
 
 
        

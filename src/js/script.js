@@ -2,6 +2,7 @@
 
 var camera,FrontalCamera, TopCamera, LateralCamera;
 var scene, renderer;
+var mobile, branchOne, branchTwo, branchThree;
 
 //let distance = 5;
 
@@ -55,14 +56,17 @@ function createScene() {
 
 	scene.add(new THREE.AxesHelper(20));
 	/* so para clarificar : 
-	eixo cor azul = eixo dos xx
-	eixo cor vermelha = eixo dos yy 
-	eixo cor verde = eixo dos zz , Bom afinal não sei se é bem assim.. vi em outros projetos, quando
+	eixo cor vermelha = eixo dos xx 
+	eixo cor azul = eixo dos yy
+	eixo cor verde = eixo dos zz 
+	
+	Nota: vi em outros projetos, quando
 	a camera está em (0,100,0) isto dá uma vista de cima em vez de lado como se fosse dos yy... 
-	estou confusa mas o verde é pelo menos sempre o zz , por tanto maybe depois alterar os nomes
+	 por tanto maybe depois alterar os nomes
 	das variaveis porque o Topcamera nao dá supostamente a vista de cima, mas sim o 3 é que da*/
 
 	//createMobile(0,0,0); /*Acho melhor criar uma classe chamada Mobile, dps faz-se new Mobile*/
+	mobile= new Mobile(0,0,0);
 	
 
 }
@@ -71,10 +75,43 @@ function animate() {
 	'use strict';
 
 	/*funcoes de animacao sobre o mobile*/
+	var speed= 2;
+	// girar todo o mobile
+	if(mobile.getBranchOneRotation() != 0) {
+		if (mobile.branchOneRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
+			mobile.rotateBranchOne(0);
+		else if(mobile.branchOneRotation == 2)
+			mobile.rotateBranchOne(-0);
+	}
 
-	render();
+	//girar ramo2 
+	if(mobile.getBranchTwoRotation() != 0) {
+		if (mobile.branchTwoRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
+			mobile.rotateBranchTwo(0);
+		else if(mobile.branchTwoRotation == 2)
+			mobile.rotateBranchTwo(-0);
+	}
+
+	//girar ramo3
+	if(mobile.getBranchThreeRotation() != 0) {
+		if (mobile.branchThreeRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
+			mobile.rotateBranchThree(0);
+		else if(mobile.branchThreeRotation == 2)
+			mobile.rotateBranchThree(-0);
+			
+	}
+
+	//mover o mobile
+	if (robot.getMove()  != 0) {
+		if (robot.move == 1)
+			robot.moveRobot(speed);
+		else if(robot.move == 2)
+			robot.moveRobot(-speed);
+	}
 
 	requestAnimationFrame(animate);
+	render();
+	
 }
 
 
@@ -118,52 +155,56 @@ function onKeyDown(e) {
             break;
 
         case 52: //4
-			/* Fazer algo tipo mobile.changeWireframe();*/	
+			mobile.changeWireframe();
 	
 			break;
 			
 		case 87: // W
 		case 119: // w   /*Rodar v1 num sentido*/
-			/*Ter algo do tipo mobile.rotate(v1,Right)*/
+
+			mobile.rotateBranchOne(0); 
 			break;
 	
 		case 81: // Q  /*rodar v1 noutro sentido*/
 		case 113: //q
-		/*mobile.rotate(v1,left)*/
+			mobile.rotateBranchOne(-0);
 				
 		break;      
 	
 		case 65: // A
         case 97: //a
-           	/* mobile.rotate(v2,right)*/
+           	mobile.rotateBranchTwo(0);
 			break;
 			
-		case 68:  //D /* Procurar d minusculo*/
-		/*mobile.rotate(v2,left)*/  /*Acho que ramo1 ramo 2 e ramo 3 devem ser partes do mobile separadas,
-		depois podemos fazer ramo1.rotate(right), por exemplo.*/
-		case 90:  //Z /* procurar z minusculo*/
-		/*v3.rotate(right);*/
+		case 68:  //D 
+		case 100: //d
+			mobile.rotateBranchTwo(-0);  
+		
+		case 90:  //Z 
+		case 122: //z
+			mobile.rotateBranchThree(0);
 			break;
 
         case 83: // S
         case 115: //s
-            /*v3.rotate(left)*/
+            mobile.rotateBranchThree(-0);
 			break;
-			case 38: // Seta para cima
-        	/*mobile.move()*/
 
-            break;
+		case 38: // Seta para cima
+			mobile.setMobileMoving(1);
+
+        	break;
 
         case 40: // Seta para baixo
-            /*mobile.move()*/
+		   mobile.setMobileMoving(2);
             break;
 
         case 39: // Seta para o lado direito
-            /*mobile.move()*/
+			mobile.setBaseMovement(1);
             break;
         
         case 37: // Seta para o lado esquerdo
-           /*mobile.move()*/
+			mobile.setBaseMovement(1);
             break;
 
        
