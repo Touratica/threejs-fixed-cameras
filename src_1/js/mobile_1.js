@@ -6,16 +6,15 @@ class Mobile extends Elemento {
         this.ramo1= new Elemento();
         this.ramo2= new Elemento();
         this.ramo3= new Elemento();
+
+        this.add(this.ramo1);
+        this.add(this.ramo2);
+        this.add(this.ramo3);
     }
 
 
 
     //Ramo1
-    create(){
-        this.add(this.ramo1);
-        this.add(this.ramo2);
-        this.add(this.ramo3);
-    }
 
     addParallelepipedVerticalRamo1(material,x, y, z, w, h) {
         this.ramo1.addParallelepipedVertical(material,x, y, z, w, h);

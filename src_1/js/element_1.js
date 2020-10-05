@@ -18,7 +18,7 @@ class Elemento extends THREE.Object3D {
     
     }
     
-    addCylinderHorizontal(x,y,z,base,height){
+    addCylinderHorizontal(material,x,y,z,base,height){
     
         var geometry = new THREE.CylinderGeometry( base, base, height, 64 ); /*Verificar estes parametros*/
         var mesh= new THREE.Mesh(geometry,material);

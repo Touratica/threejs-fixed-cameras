@@ -3,6 +3,7 @@
 var camera,FrontalCamera, TopCamera, LateralCamera;
 var scene, renderer;
 var mobile, branchOne, branchTwo, branchThree;
+var larguraArames=0.5;
 
 //let distance = 5;
 
@@ -28,6 +29,44 @@ function createMobile(x, y, z) {
 	scene.add(mobile);
 
 }*/
+
+function create_G3(){
+	var g1= new Elemento();
+	var g2= new Elemento();
+	var bcil6=, hcil6=;
+	var bcub4=, hcub4=;
+	var hest17=;
+	var hv3=;
+	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
+
+	g1.addCylinderHorizontal(material,0,-hv3-bcil6/2,0,bcil6,hcil6);
+	g1.addParallelepipedVertical(material,0,bcub4/2,0,bcub4,hcub4);
+
+	g1.position.set(0,hest17/2,0);
+
+
+
+}
+function create_G2_2();
+function create_G2_1();
+function create_G2();
+function create_G1_4();
+function create_G1_3();
+function create_G1_2();
+function create_G1_1();
+function create_G1();
+
+function createMobile(){
+	create_G3();
+	create_G2_2();
+	create_G2_1();
+	create_G2();
+	create_G1_4();
+	create_G1_3();
+	create_G1_2();
+	create_G1_1();
+	create_G1();
+}
 
 function createCamera(x,y,z) {
 	'use strict';
@@ -66,8 +105,9 @@ function createScene() {
 	das variaveis porque o Topcamera nao dá supostamente a vista de cima, mas sim o 3 é que da*/
 
 	//createMobile(0,0,0); /*Acho melhor criar uma classe chamada Mobile, dps faz-se new Mobile*/
-	mobile= new Mobile(0,0,0);
-	
+	mobile= new Mobile();
+	createMobile();
+	scene.add(mobile);
 
 }
 
