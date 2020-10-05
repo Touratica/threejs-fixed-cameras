@@ -7,9 +7,10 @@ class Mobile extends Elemento {
         this.ramo2= new Elemento();
         this.ramo3= new Elemento();
 
+        this.ramo2.add(this.ramo3);
+        this.ramo1.add(this.ramo2);
         this.add(this.ramo1);
-        this.add(this.ramo2);
-        this.add(this.ramo3);
+
     }
 
 
@@ -89,7 +90,7 @@ class Mobile extends Elemento {
         this.ramo3.rotateZ(a);
     }
 
-    addElementoRamo2(e,x,y,z){
-        this.ramo2.addElemento(e,x,y,z);
+    addElementoRamo3(e,x,y,z){
+        this.ramo3.addElemento(e,x,y,z);
     }
 }

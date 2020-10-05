@@ -36,15 +36,20 @@ function create_G3(){
 	var bcil6=, hcil6=;
 	var bcub4=, hcub4=;
 	var hest17=;
+	var hest16=;
 	var hv3=;
 	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
 
-	g1.addCylinderHorizontal(material,0,-hv3-bcil6/2,0,bcil6,hcil6);
-	g1.addParallelepipedVertical(material,0,bcub4/2,0,bcub4,hcub4);
+	g1.addCylinderHorizontal(material,0,-(hest17/2)-bcil6/2,0,bcil6,hcil6);
+	g1.addParallelepipedVertical(material,0,(hest17/2)+bcub4/2,0,bcub4,hcub4);
+	g1.addCylinderHorizontal(material,0,0,0,larguraArames,hest17);
 
-	g1.position.set(0,hest17/2,0);
+	g2.addCylinderVertical(material,0,0,-hv3/2,larguraArames,hv3);
+	g2.addElemento(g1,0,0,-hv3);
 
+	mobile.addElementoRamo3s(g3,0,0,0);
 
+	mobile.SetPositionRamo3(0,-hest16/2,0);
 
 }
 function create_G2_2();
