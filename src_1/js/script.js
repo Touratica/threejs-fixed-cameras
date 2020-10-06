@@ -3,32 +3,8 @@
 var camera, FrontalCamera, TopCamera, LateralCamera;
 var scene, renderer;
 var mobile, branchOne, branchTwo, branchThree;
-var larguraArames = 0.5;
+var wireThickness = 0.5;
 
-//let distance = 5;
-
-/*function addRod(obj, x, y, z, h, a) {
-	'use strict';
-
-	let geometry = new THREE.CylinderGeometry(1, 1, h);
-	geometry.rotateZ(a * Math.PI / 180);
-	let material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
-	let mesh = new THREE.Mesh(geometry, material);
-	mesh.position.set(x, y, z);
-	obj.add(mesh);
-
-}
-
-function createMobile(x, y, z) {
-	'use strict';
-	let mobile = new THREE.Object3D();
-
-	addRod(mobile, x, y, z, 5, 0);
-	addRod(mobile, x, y - 3.5, 0, 6, 90);
-
-	scene.add(mobile);
-
-}*/
 
 function create_G3() {
 	var g1 = new Component();
@@ -41,16 +17,15 @@ function create_G3() {
 	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
 
 	g1.addCylinderHorizontal(material, 0, -(hest17 / 2) - bcil6 / 2, 0, bcil6, hcil6);
-	g1.addParallelepipedVertical(material, 0, (hest17 / 2) + bcub4 / 2, 0, bcub4, hcub4);
-	g1.addCylinderHorizontal(material, 0, 0, 0, larguraArames, hest17);
+	g1.addCuboidVertical(material, 0, (hest17 / 2) + bcub4 / 2, 0, bcub4, hcub4);
+	g1.addCylinderHorizontal(material, 0, 0, 0, wireThickness, hest17);
 
-	g2.addCylinderVertical(material, 0, 0, -hv3 / 2, larguraArames, hv3);
+	g2.addCylinderVertical(material, 0, 0, -hv3 / 2, wireThickness, hv3);
 	g2.addComponent(g1, 0, 0, -hv3);
 
 	mobile.addComponentBranch3(g2, 0, 0, 0);
 
 	return mobile.branchThree();
-
 }
 
 function create_G2_2(){
@@ -65,9 +40,9 @@ function create_G2_2(){
 
 	g1.addCylinderHorizontal(material, 0, (hest16 / 2) + bcil7 / 2, 0, bcil7, hcil7);
 	g1.addComponent(group,0,-(hest16 / 2), 0);
-	g1.addCylinderHorizontal(material, 0, 0, 0, larguraArames, hest16);
+	g1.addCylinderHorizontal(material, 0, 0, 0, wireThickness, hest16);
 
-	g2.addCylinderVertical(material, 0, 0, -hest15 / 2, larguraArames, hest15);
+	g2.addCylinderVertical(material, 0, 0, -hest15 / 2, wireThickness, hest15);
 	g2.addComponent(g1, 0, 0, -hest15);
 
 }
@@ -92,23 +67,15 @@ function createMobile() {
 
 function createCamera(x, y, z) {
 	'use strict';
-	/*camera = new THREE.OrthographicCamera(-8 * distance, 8 * distance,
-		4.5 * distance,-4.5 * distance);
-	scene.add(camera);*/
-	var distance = 5;
+	let distance = 5;
 
-	camera = new THREE.OrthographicCamera(window.innerWidth / -distance,
-		window.innerWidth / distance,
-		window.innerHeight / distance,
-		window.innerHeight / -distance,
-		1,
-		1000);
+	camera = new THREE.OrthographicCamera(window.innerWidth / -distance, window.innerWidth / distance,
+		window.innerHeight / distance, window.innerHeight / -distance, 1, 1000);
 	camera.position.x = x;
 	camera.position.y = y;
 	camera.position.z = z;
 	camera.lookAt(scene.position);
 	return camera;
-
 }
 
 function createScene() {
@@ -130,15 +97,14 @@ function createScene() {
 	mobile = new Mobile();
 	createMobile();
 	scene.add(mobile);
-
 }
 
 function animate() {
 	'use strict';
 
-	/*funcoes de animacao sobre o mobile*/
+	// Mobile animation functions
 	var speed = 2;
-	// girar todo o mobile
+	// rotates whole mobile
 	if (mobile.getBranchOneRotation() != 0) {
 		if (mobile.branchOneRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
 			mobile.rotateBranch1z(0);
@@ -173,7 +139,6 @@ function animate() {
 
 	requestAnimationFrame(animate);
 	renderer.render(scene, camera);
-
 }
 
 function onResize() {
@@ -201,7 +166,7 @@ function onKeyDown(e) {
 			break;
 
 		case "4":
-			mobile.changeWireframe();
+			mobile.toggleWireframe();
 			break;
 
 		case "W":
@@ -255,7 +220,7 @@ function __init__() {
 	'use strict';
 
 	renderer = new THREE.WebGLRenderer({antialias: true});
-	renderer.setClearColor("black");
+	renderer.setClearColor("#FFFFFF");
 	renderer.setSize(window.innerWidth, window.innerHeight);
 
 	document.body.appendChild(renderer.domElement);

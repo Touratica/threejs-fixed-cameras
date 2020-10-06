@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f0b5298-a118-4ed0-8198-d3b86e3eb586" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/mobile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,6 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601975683835</updated>
       <workItem from="1601975685090" duration="4070000" />
+      <workItem from="1601998705528" duration="2075000" />
     </task>
     <task id="LOCAL-00001" summary="Makes small changes">
       <created>1601977202646</created>
@@ -111,12 +112,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Makes small changes" />
     <MESSAGE value="Fixes deprecated functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes deprecated functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="WindowStateProjectService">
     <state x="698" y="229" key="#JavaScript" timestamp="1601978452303">

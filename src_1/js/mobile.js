@@ -1,5 +1,4 @@
 class Mobile extends Component {
-
     constructor(x, y, z) {
         super();
         this.position.set(x,y,z);
@@ -8,15 +7,12 @@ class Mobile extends Component {
         this.branch3 = new Component();
 
         this.add(this.branch1);
-
     }
-
-
 
     //Branch1
 
     addCuboidVerticalBranch1(material, x, y, z, w, h) {
-        this.branch1.addParallelepipedVertical(material,x, y, z, w, h);
+        this.branch1.addCuboidVertical(material,x, y, z, w, h);
     }
 
     addCylinderVerticalBranch1(material, x, y, z, base, height){
@@ -45,8 +41,8 @@ class Mobile extends Component {
 
     //Branch2
 
-    addParallelepipedVerticalBranch2(material,x, y, z, w, h) {
-        this.branch2.addParallelepipedVertical(material,x, y, z, w, h);
+    addCuboidVerticalBranch2(material,x, y, z, w, h) {
+        this.branch2.addCuboidVertical(material,x, y, z, w, h);
     }
 
     addCylinderVerticalBranch2(material, x, y, z, base, height){
@@ -75,8 +71,8 @@ class Mobile extends Component {
 
     //Branch3
 
-    addParallelepipedVerticalBranch3(material,x, y, z, w, h) {
-        this.branch3.addParallelepipedVertical(material,x, y, z, w, h);
+    addCuboidVerticalBranch3(material,x, y, z, w, h) {
+        this.branch3.addCuboidVertical(material,x, y, z, w, h);
     }
 
     addCylinderVerticalBranch3(material,x,y,z,base,height){

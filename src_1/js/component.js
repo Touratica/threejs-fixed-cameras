@@ -1,39 +1,34 @@
 'use strict';
 class Component extends THREE.Object3D {
-
-    addParallelepipedVertical(material,x, y, z, w, h) {
-        var geometry = new THREE.BoxGeometry(w, h, w);
-        var mesh= new THREE.Mesh(geometry,material);
+    addCuboidVertical(material, x, y, z, w, h) {
+        let geometry = new THREE.BoxGeometry(w, h, w);
+        let mesh = new THREE.Mesh(geometry, material);
         this.add(mesh);
-        mesh.rotateX(Math.PI/2);
+        mesh.rotateX(Math.PI / 2);
         mesh.position.set(x, y, z);
     }
 
-    addCylinderVertical(material,x,y,z,base,height){
-        var geometry = new THREE.CylinderGeometry( base, base, height, 64 ); /*Verificar estes parametros*/
-        var mesh= new THREE.Mesh(geometry,material);
+    addCylinderVertical(material, x, y, z, base, height) {
+        let geometry = new THREE.CylinderGeometry(base, base, height, 64, 1);
+        let mesh= new THREE.Mesh(geometry, material);
         this.add(mesh);
-        mesh.rotateX(Math.PI/2);
         mesh.position.set(x, y, z);
-    
     }
     
-    addCylinderHorizontal(material,x,y,z,base,height){
-    
-        var geometry = new THREE.CylinderGeometry( base, base, height, 64 ); /*Verificar estes parametros*/
-        var mesh= new THREE.Mesh(geometry,material);
+    addCylinderHorizontal(material, x, y, z, base, height) {
+        let geometry = new THREE.CylinderGeometry(base, base, height, 64, 1);
+        let mesh= new THREE.Mesh(geometry, material);
         this.add(mesh);
-        mesh.rotateX(Math.PI/2);
+        mesh.rotateX(Math.PI / 2);
         mesh.position.set(x, y, z);
     }
 
-    addComponent(e,x,y,z){
-        this.add(e);
-        e.position.set(x,y,z);
+    addComponent(comp, x, y, z) {
+        this.add(comp);
+        comp.position.set(x,y,z);
     }
 
-    changeWireframe() {
+    toggleWireframe() {
         this.material.wireframe = !this.material.wireframe;
     }
-
 }
