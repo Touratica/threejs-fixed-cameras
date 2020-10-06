@@ -7,8 +7,6 @@ class Mobile extends Component {
         this.branch2 = new Component();
         this.branch3 = new Component();
 
-        this.branch2.add(this.branch3);
-        this.branch1.add(this.branch2);
         this.add(this.branch1);
 
     }
@@ -41,6 +39,10 @@ class Mobile extends Component {
         this.branch1.addComponent(e,x,y,z);
     }
 
+    branchOne(){
+        return this.branch1;
+    }
+
     //Branch2
 
     addParallelepipedVerticalBranch2(material,x, y, z, w, h) {
@@ -65,6 +67,10 @@ class Mobile extends Component {
 
     addComponentBranch2(e,x,y,z){
         this.branch2.addComponent(e,x,y,z);
+    }
+
+    branchTwo(){
+        return this.branch2;
     }
 
     //Branch3
@@ -92,5 +98,9 @@ class Mobile extends Component {
 
     addComponentBranch3(e,x,y,z){
         this.branch3.addComponent(e,x,y,z);
+    }
+
+    branchThree(){
+        return this.branch3;
     }
 }

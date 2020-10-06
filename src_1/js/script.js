@@ -47,13 +47,30 @@ function create_G3() {
 	g2.addCylinderVertical(material, 0, 0, -hv3 / 2, larguraArames, hv3);
 	g2.addComponent(g1, 0, 0, -hv3);
 
-	mobile.addComponentBranch3(g3, 0, 0, 0);
+	mobile.addComponentBranch3(g2, 0, 0, 0);
 
-	mobile.SetPositionBranch3(0, -hest16 / 2, 0);
+	return mobile.branchThree();
 
 }
 
-function create_G2_2();
+function create_G2_2(){
+	var g1 = new Component();
+	var g2 = new Component();
+	var group= create_G3();
+	var bcil7 =, hcil7 =;
+	var hest14 =;
+	var hest15 =;
+	var hest16 =;
+	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
+
+	g1.addCylinderHorizontal(material, 0, (hest16 / 2) + bcil7 / 2, 0, bcil7, hcil7);
+	g1.addComponent(group,0,-(hest16 / 2), 0);
+	g1.addCylinderHorizontal(material, 0, 0, 0, larguraArames, hest16);
+
+	g2.addCylinderVertical(material, 0, 0, -hest15 / 2, larguraArames, hest15);
+	g2.addComponent(g1, 0, 0, -hest15);
+
+}
 
 function create_G2_1();
 
@@ -70,14 +87,6 @@ function create_G1_1();
 function create_G1();
 
 function createMobile() {
-	create_G3();
-	create_G2_2();
-	create_G2_1();
-	create_G2();
-	create_G1_4();
-	create_G1_3();
-	create_G1_2();
-	create_G1_1();
 	create_G1();
 }
 
