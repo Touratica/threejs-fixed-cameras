@@ -31,8 +31,8 @@ function createMobile(x, y, z) {
 }*/
 
 function create_G3(){
-	var g1= new Elemento();
-	var g2= new Elemento();
+	var g1= new Component();
+	var g2= new Component();
 	var bcil6=, hcil6=;
 	var bcub4=, hcub4=;
 	var hest17=;
@@ -45,11 +45,11 @@ function create_G3(){
 	g1.addCylinderHorizontal(material,0,0,0,larguraArames,hest17);
 
 	g2.addCylinderVertical(material,0,0,-hv3/2,larguraArames,hv3);
-	g2.addElemento(g1,0,0,-hv3);
+	g2.addComponent(g1,0,0,-hv3);
 
-	mobile.addElementoRamo3s(g3,0,0,0);
+	mobile.addComponentBranch3(g3,0,0,0);
 
-	mobile.SetPositionRamo3(0,-hest16/2,0);
+	mobile.SetPositionBranch3(0,-hest16/2,0);
 
 }
 function create_G2_2();
@@ -124,12 +124,12 @@ function animate() {
 	// girar todo o mobile
 	if(mobile.getBranchOneRotation() != 0) {
 		if (mobile.branchOneRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
-			mobile.rotateBranchOne(0);
+			mobile.rotateBranch1z(0);
 		else if(mobile.branchOneRotation == 2)
-			mobile.rotateBranchOne(-0);
+			mobile.rotateBranch1z(-0);
 	}
 
-	//girar ramo2 
+	//girar branch2 
 	if(mobile.getBranchTwoRotation() != 0) {
 		if (mobile.branchTwoRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
 			mobile.rotateBranchTwo(0);
@@ -137,7 +137,7 @@ function animate() {
 			mobile.rotateBranchTwo(-0);
 	}
 
-	//girar ramo3
+	//girar branch3
 	if(mobile.getBranchThreeRotation() != 0) {
 		if (mobile.branchThreeRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
 			mobile.rotateBranchThree(0);

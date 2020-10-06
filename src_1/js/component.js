@@ -1,5 +1,5 @@
 'use strict';
-class Elemento extends THREE.Object3D {
+class Component extends THREE.Object3D {
 
     addParallelepipedVertical(material,x, y, z, w, h) {
         var geometry = new THREE.BoxGeometry(w, h, w);
@@ -27,7 +27,7 @@ class Elemento extends THREE.Object3D {
         mesh.position.set(x, y, z);
     }
 
-    addElemento(e,x,y,z){
+    addComponent(e,x,y,z){
         this.add(e);
         e.position.set(x,y,z);
     }
