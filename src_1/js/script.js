@@ -159,12 +159,12 @@ function create_G1_3(){
 
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst8);
-	comp1.addCylinderVertical(estMaterial,0,hest8/-2 - wireThickness/2,-hest9/2,wireThickness,hest9);
-	comp1.addCylinderVertical(objMaterial, 0,- hEst18/2 - b3/ 2, -hest9,bCil3,hCil3);
+	comp1.addCylinderVertical(estMaterial,0,hEst8/-2 - wireThickness/2,-hest9/2,wireThickness,hest9);
+	comp1.addCylinderVertical(objMaterial, 0,- hEst8/2 - bCil3/ 2, -hest9,bCil3,hCil3);
 	comp1.addComponent(group, 0, hEst8/2 + wireThickness / 2 , 0);
 	
 	comp2.addCylinderVertical(objMaterial, 0, 0, hEst7 / -2, wireThickness, hEst7);
-	comp2.addComponent(comp1, 0, -hest8/2 + (1/6)*hEst8, -hEst7 - wireThickness / 2);
+	comp2.addComponent(comp1, 0, -hEst8/2 + (1/6)*hEst8, -hEst7 - wireThickness / 2);
 
 	return comp2;
 }
@@ -186,7 +186,7 @@ function create_G1_2(){
 	var hcil2= 2 , bcil2= 1;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst5);
-	comp1.addCylinderVertical(objMaterial, 0, - hEst5/2 - bCil2 / 2, - hEst6 -hcil2/2, bCil2, hCil2);
+	comp1.addCylinderVertical(objMaterial, 0, - hEst5/2 - bcil2 / 2, - hEst6 -hcil2/2, bcil2, hcil2);
 	comp1.addCylinderVertical(objMaterial, 0, -hEst5/2 - wireThickness / 2, 0, wireThickness , hEst6);
 	comp1.addCylinderVertical(objMaterial, 0, hEst5/2 + wireThickness / 2, 0, wireThickness , hEst6);
 	comp1.addComponent(group, 0, hEst5/2 + wireThickness / 2 , - hEst7 - wireThickness/2);
@@ -202,7 +202,7 @@ function create_G1_1()
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G1_4(); 
+	var group = create_G1_2(); 
 	
 	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
 	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
