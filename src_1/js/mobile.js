@@ -25,7 +25,9 @@ class Mobile extends Component {
 
     setBranchOne(c){
         this.branch1=c;
+        this.add(this.branch1);
     }
+    
 
     //Branch2
 

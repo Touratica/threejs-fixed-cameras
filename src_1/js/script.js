@@ -273,7 +273,7 @@ function createScene() {
 	/* so para clarificar :
 	eixo cor vermelha = eixo dos xx
 	eixo cor azul = eixo dos yy
-	eixo cor verde = eixo dos zz */ 
+	eixo cor verde = eixo dos zz */
 	mobile = new Mobile(0,0,0);
 	createMobile();
 	scene.add(mobile);
