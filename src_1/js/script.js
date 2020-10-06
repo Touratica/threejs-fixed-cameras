@@ -18,8 +18,8 @@ function create_G3() {
 	let wCub4 = 1, hCub4 = 1, dCub4 = 1;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst17);
-	comp1.addCylinderVertical(objMaterial, 0, -2 - bCil6 / 2, 0, bCil6, hCil6);
-	comp1.addCuboid(objMaterial, 0, 2 + wCub4 / 2, 0, wCub4, hCub4, dCub4);
+	comp1.addCylinderVertical(objMaterial, 0, - hEst17/2 - bCil6 / 2, 0, bCil6, hCil6);
+	comp1.addCuboid(objMaterial, 0, hEst17/2 + wCub4 / 2, 0, wCub4, hCub4, dCub4);
 	
 	comp2.addCylinderVertical(objMaterial, 0, 0, hV3 / -2, wireThickness, hV3);
 	comp2.addComponent(comp1, 0, 0, -hV3 - wireThickness / 2);
@@ -30,21 +30,33 @@ function create_G3() {
 }
 
 function create_G2_2(){
-	var g1 = new Component();
-	var g2 = new Component();
+
+	let comp1 = new Component();
+	let comp2 = new Component();
+
 	var group = create_G3();
-	var bcil7 = 2, hcil7 = 3;
-	// var hest14 = 9; // TODO: Remove?
+	
+	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
+	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
+
 	var hest15 = 2;
 	var hest16 = 7;
-	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
+	var bcil7 = 2, hcil7 = 3;
 
-	g1.addCylinderHorizontal(material, 0, (hest16 / 2) + bcil7 / 2, 0, bcil7, hcil7);
-	g1.addComponent(group, 0, -(hest16 / 2), 0);
-	g1.addCylinderHorizontal(material, 0, 0, 0, wireThickness, hest16);
-	g2.addCylinderVertical(material, 0, 0, -hest15 / 2, wireThickness, hest15);
-	g2.addComponent(g1, 0, 0, -hest15);
+	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst16);
+	comp1.addCylinderVertical(objMaterial, 0, hEst16/2 + bCil7 / 2, 0, bCil7, hCil7);
+	comp1.addComponent(group, 0, -hEst16/2 - wireThickness / 2 , 0);
+	
+	comp2.addCylinderVertical(objMaterial, 0, 0, hest15 / -2, wireThickness, hest15);
+	comp2.addComponent(comp1, 0, 0, -hest15 - wireThickness / 2);
+
+	return comp2;
 }
+
+
+
+
+
 
 function create_G2_1(){
 	var g1 = new Component();
