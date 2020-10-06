@@ -1,5 +1,4 @@
 /*global THREE*/
-
 var camera, FrontalCamera, TopCamera, LateralCamera;
 var scene, renderer;
 var mobile, branchOne, branchTwo, branchThree;
@@ -25,31 +24,11 @@ function create_G3() {
 	comp2.addCylinderVertical(objMaterial, 0, 0, hV3 / -2, wireThickness, hV3);
 	comp2.addComponent(comp1, 0, 0, -hV3 - wireThickness / 2);
 
-	return comp2;
-}
-
-/* function create_G3() {
-	var g1 = new Component();
-	var g2 = new Component();
-	var bcil6 = 1, hcil6 = 1;
-	var bcub4 = 1, hcub4 = 1;
-	var hest17 = 4;
-	// var hest16 = 7; // TODO: Remove?
-	var hv3 = 2;
-	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
-
-	g1.addCylinderHorizontal(material, 0, -(hest17 / 2) - bcil6 / 2, 0, bcil6, hcil6);
-	g1.addCuboidVertical(material, 0, (hest17 / 2) + bcub4 / 2, 0, bcub4, hcub4);
-	g1.addCylinderHorizontal(material, 0, 0, 0, wireThickness, hest17);
-
-	g2.addCylinderVertical(material, 0, 0, -hv3 / 2, wireThickness, hv3);
-	g2.addComponent(g1, 0, 0, -hv3);
-
-	mobile.addComponentBranch3(g2, 0, 0, 0);
+	mobile.setBranchThree(comp2);
 
 	return mobile.branchThree();
 }
- */
+
 function create_G2_2(){
 	var g1 = new Component();
 	var g2 = new Component();
