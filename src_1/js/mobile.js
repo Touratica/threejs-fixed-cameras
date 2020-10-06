@@ -1,4 +1,4 @@
-class Mobile {
+class Mobile extends Component {
 
     branch1;
     branch2;
