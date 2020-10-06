@@ -1,7 +1,7 @@
 'use strict';
 class Component extends THREE.Object3D {
-    addCuboidVertical(material, x, y, z, w, h) {
-        let geometry = new THREE.BoxGeometry(w, h, w);
+    addCuboid(material, x, y, z, w, h, d) {
+        let geometry = new THREE.BoxGeometry(w, h, d);
         let mesh = new THREE.Mesh(geometry, material);
         this.add(mesh);
         mesh.rotateX(Math.PI / 2);
@@ -9,14 +9,14 @@ class Component extends THREE.Object3D {
     }
 
     addCylinderVertical(material, x, y, z, base, height) {
-        let geometry = new THREE.CylinderGeometry(base, base, height, 64, 1);
+        let geometry = new THREE.CylinderGeometry(base / 2, base / 2, height, 64, 1);
         let mesh= new THREE.Mesh(geometry, material);
         this.add(mesh);
         mesh.position.set(x, y, z);
     }
     
     addCylinderHorizontal(material, x, y, z, base, height) {
-        let geometry = new THREE.CylinderGeometry(base, base, height, 64, 1);
+        let geometry = new THREE.CylinderGeometry(base / 2, base / 2, height, 64, 1);
         let mesh= new THREE.Mesh(geometry, material);
         this.add(mesh);
         mesh.rotateX(Math.PI / 2);

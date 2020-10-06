@@ -7,13 +7,35 @@ var wireThickness = 0.5;
 
 
 function create_G3() {
+	let comp1 = new Component();
+	let comp2 = new Component();
+	
+	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
+	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
+
+	let hV3 = 2;
+	let hEst17 = 4; 
+	let bCil6 = 1, hCil6 = 1
+	let wCub4 = 1, hCub4 = 1, dCub4 = 1;
+
+	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst17);
+	comp1.addCylinderVertical(objMaterial, 0, -2 - bCil6 / 2, 0, bCil6, hCil6);
+	comp1.addCuboid(objMaterial, 0, 2 + wCub4 / 2, 0, wCub4, hCub4, dCub4);
+	
+	comp2.addCylinderVertical(objMaterial, 0, 0, hV3 / -2, wireThickness, hV3);
+	comp2.addComponent(comp1, 0, 0, -hV3 - wireThickness / 2);
+
+	return comp2;
+}
+
+/* function create_G3() {
 	var g1 = new Component();
 	var g2 = new Component();
-	var bcil6 =, hcil6 =;
-	var bcub4 =, hcub4 =;
-	var hest17 =;
-	var hest16 =;
-	var hv3 =;
+	var bcil6 = 1, hcil6 = 1;
+	var bcub4 = 1, hcub4 = 1;
+	var hest17 = 4;
+	// var hest16 = 7; // TODO: Remove?
+	var hv3 = 2;
 	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
 
 	g1.addCylinderHorizontal(material, 0, -(hest17 / 2) - bcil6 / 2, 0, bcil6, hcil6);
@@ -27,33 +49,59 @@ function create_G3() {
 
 	return mobile.branchThree();
 }
-
+ */
 function create_G2_2(){
 	var g1 = new Component();
 	var g2 = new Component();
-	var group= create_G3();
-	var bcil7 =, hcil7 =;
-	var hest14 =;
-	var hest15 =;
-	var hest16 =;
+	var group = create_G3();
+	var bcil7 = 2, hcil7 = 3;
+	// var hest14 = 9; // TODO: Remove?
+	var hest15 = 2;
+	var hest16 = 7;
 	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
 
 	g1.addCylinderHorizontal(material, 0, (hest16 / 2) + bcil7 / 2, 0, bcil7, hcil7);
-	g1.addComponent(group,0,-(hest16 / 2), 0);
+	g1.addComponent(group, 0, -(hest16 / 2), 0);
 	g1.addCylinderHorizontal(material, 0, 0, 0, wireThickness, hest16);
-
 	g2.addCylinderVertical(material, 0, 0, -hest15 / 2, wireThickness, hest15);
 	g2.addComponent(g1, 0, 0, -hest15);
+}
+
+function create_G2_1(){
+	var g1 = new Component();
+	var g2 = new Component();
+	var group = create_G3();
+	var bcil7 = 2, hcil7 = 3;
+	var hest14 = 9;
+	var hest15 = 2;
+	var hest16 = 7;
+	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
+	
+
 
 }
 
-function create_G2_1();
 
-function create_G2();
+function create_G2() {
+	var bcubo3 = 1, hcubo3= 1;
+	var hest12=5;
+	var hv2 = 2;
+	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
 
-function create_G1_4();
+}
 
-function create_G1_3();
+function create_G1_4(){
+	var hest10= 4;
+	var hcil4= 2, bcil4 = 1 ;
+	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
+
+	
+}
+
+function create_G1_3(){
+	var hest7 = 2 ;
+	var hest
+}
 
 function create_G1_2();
 
@@ -67,10 +115,11 @@ function createMobile() {
 
 function createCamera(x, y, z) {
 	'use strict';
-	let distance = 5;
+	let viewWidth = 35;
+	let viewHeight = 44;
 
-	camera = new THREE.OrthographicCamera(window.innerWidth / -distance, window.innerWidth / distance,
-		window.innerHeight / distance, window.innerHeight / -distance, 1, 1000);
+	camera = new THREE.OrthographicCamera(viewWidth / -2, viewWidth / 2,
+		viewHeight / 2, viewHeight / -2, 1, 1000);
 	camera.position.x = x;
 	camera.position.y = y;
 	camera.position.z = z;

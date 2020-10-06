@@ -21,9 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7f0b5298-a118-4ed0-8198-d3b86e3eb586" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/component.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +77,8 @@
       <option name="presentableId" value="Default" />
       <updated>1601975683835</updated>
       <workItem from="1601975685090" duration="4070000" />
-      <workItem from="1601998705528" duration="2075000" />
+      <workItem from="1601998705528" duration="2108000" />
+      <workItem from="1602002829590" duration="174000" />
     </task>
     <task id="LOCAL-00001" summary="Makes small changes">
       <created>1601977202646</created>
@@ -96,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601978392994</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixes cylinder adding">
+      <created>1602000804737</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1602000804737</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +123,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Makes small changes" />
     <MESSAGE value="Fixes deprecated functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Fixes cylinder adding" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes cylinder adding" />
   </component>
   <component name="WindowStateProjectService">
     <state x="698" y="229" key="#JavaScript" timestamp="1601978452303">
@@ -129,10 +135,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="375" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601977745991" />
-    <state x="476" y="253" key="Vcs.Push.Dialog.v2" timestamp="1601978403370">
+    <state x="476" y="253" key="Vcs.Push.Dialog.v2" timestamp="1602000821367">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="476" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601978403370" />
+    <state x="476" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602000821367" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601989068454">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
