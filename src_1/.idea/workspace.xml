@@ -20,13 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f0b5298-a118-4ed0-8198-d3b86e3eb586" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -47,6 +56,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -56,6 +66,11 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\joaop\OneDrive - Universidade de Lisboa\Documents\Instituto Superior Técnico\LEIC-A\4º Ano\1º Semestre\Computação Gráfica\GitHub\proj1\src_1" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601975683835</updated>
-      <workItem from="1601975685090" duration="2466000" />
+      <workItem from="1601975685090" duration="4070000" />
     </task>
     <task id="LOCAL-00001" summary="Makes small changes">
       <created>1601977202646</created>
@@ -73,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601977202646</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixes deprecated functions">
+      <created>1601978392994</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601978392994</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,17 +115,26 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Makes small changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Makes small changes" />
+    <MESSAGE value="Fixes deprecated functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes deprecated functions" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="698" y="229" key="#JavaScript" timestamp="1601978452303">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="698" y="229" key="#JavaScript/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601978452303" />
     <state x="707" y="375" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1601977745991">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="375" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601977745991" />
-    <state x="476" y="253" key="Vcs.Push.Dialog.v2" timestamp="1601977255916">
+    <state x="476" y="253" key="Vcs.Push.Dialog.v2" timestamp="1601978403370">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="476" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601977255916" />
+    <state x="476" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601978403370" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601989068454">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601989068454" />
     <state x="-1946" y="-9" width="1575" height="1027" maximized="true" key="dock-window-1" timestamp="1601977050027">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>

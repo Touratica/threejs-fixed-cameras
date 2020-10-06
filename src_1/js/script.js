@@ -31,25 +31,25 @@ function createMobile(x, y, z) {
 }*/
 
 function create_G3() {
-    var g1 = new Component();
-    var g2 = new Component();
-    var bcil6 =, hcil6 =;
-    var bcub4 =, hcub4 =;
-    var hest17 =;
-    var hest16 =;
-    var hv3 =;
-    var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
+	var g1 = new Component();
+	var g2 = new Component();
+	var bcil6 =, hcil6 =;
+	var bcub4 =, hcub4 =;
+	var hest17 =;
+	var hest16 =;
+	var hv3 =;
+	var material = new THREE.MeshBasicMaterial({color: 0xFF0000});
 
-    g1.addCylinderHorizontal(material, 0, -(hest17 / 2) - bcil6 / 2, 0, bcil6, hcil6);
-    g1.addParallelepipedVertical(material, 0, (hest17 / 2) + bcub4 / 2, 0, bcub4, hcub4);
-    g1.addCylinderHorizontal(material, 0, 0, 0, larguraArames, hest17);
+	g1.addCylinderHorizontal(material, 0, -(hest17 / 2) - bcil6 / 2, 0, bcil6, hcil6);
+	g1.addParallelepipedVertical(material, 0, (hest17 / 2) + bcub4 / 2, 0, bcub4, hcub4);
+	g1.addCylinderHorizontal(material, 0, 0, 0, larguraArames, hest17);
 
-    g2.addCylinderVertical(material, 0, 0, -hv3 / 2, larguraArames, hv3);
-    g2.addComponent(g1, 0, 0, -hv3);
+	g2.addCylinderVertical(material, 0, 0, -hv3 / 2, larguraArames, hv3);
+	g2.addComponent(g1, 0, 0, -hv3);
 
-    mobile.addComponentBranch3(g3, 0, 0, 0);
+	mobile.addComponentBranch3(g3, 0, 0, 0);
 
-    mobile.SetPositionBranch3(0, -hest16 / 2, 0);
+	mobile.SetPositionBranch3(0, -hest16 / 2, 0);
 
 }
 
@@ -70,198 +70,192 @@ function create_G1_1();
 function create_G1();
 
 function createMobile() {
-    create_G3();
-    create_G2_2();
-    create_G2_1();
-    create_G2();
-    create_G1_4();
-    create_G1_3();
-    create_G1_2();
-    create_G1_1();
-    create_G1();
+	create_G3();
+	create_G2_2();
+	create_G2_1();
+	create_G2();
+	create_G1_4();
+	create_G1_3();
+	create_G1_2();
+	create_G1_1();
+	create_G1();
 }
 
 function createCamera(x, y, z) {
-    'use strict';
-    /*camera = new THREE.OrthographicCamera(-8 * distance, 8 * distance,
-        4.5 * distance,-4.5 * distance);
-    scene.add(camera);*/
-    var distance = 5;
+	'use strict';
+	/*camera = new THREE.OrthographicCamera(-8 * distance, 8 * distance,
+		4.5 * distance,-4.5 * distance);
+	scene.add(camera);*/
+	var distance = 5;
 
-    camera = new THREE.OrthographicCamera(window.innerWidth / -distance,
-        window.innerWidth / distance,
-        window.innerHeight / distance,
-        window.innerHeight / -distance,
-        1,
-        1000);
-    camera.position.x = x;
-    camera.position.y = y;
-    camera.position.z = z;
-    camera.lookAt(scene.position);
-    return camera;
+	camera = new THREE.OrthographicCamera(window.innerWidth / -distance,
+		window.innerWidth / distance,
+		window.innerHeight / distance,
+		window.innerHeight / -distance,
+		1,
+		1000);
+	camera.position.x = x;
+	camera.position.y = y;
+	camera.position.z = z;
+	camera.lookAt(scene.position);
+	return camera;
 
 }
 
 function createScene() {
-    'use strict';
-    scene = new THREE.Scene();
+	'use strict';
+	scene = new THREE.Scene();
 
-    scene.add(new THREE.AxesHelper(20));
-    /* so para clarificar :
-    eixo cor vermelha = eixo dos xx
-    eixo cor azul = eixo dos yy
-    eixo cor verde = eixo dos zz
+	scene.add(new THREE.AxesHelper(20));
+	/* so para clarificar :
+	eixo cor vermelha = eixo dos xx
+	eixo cor azul = eixo dos yy
+	eixo cor verde = eixo dos zz
 
-    Nota: vi em outros projetos, quando
-    a camera está em (0,100,0) isto dá uma vista de cima em vez de lado como se fosse dos yy...
-     por tanto maybe depois alterar os nomes
-    das variaveis porque o Topcamera nao dá supostamente a vista de cima, mas sim o 3 é que da*/
+	Nota: vi em outros projetos, quando
+	a camera está em (0,100,0) isto dá uma vista de cima em vez de lado como se fosse dos yy...
+	 por tanto maybe depois alterar os nomes
+	das variaveis porque o Topcamera nao dá supostamente a vista de cima, mas sim o 3 é que da*/
 
-    //createMobile(0,0,0); /*Acho melhor criar uma classe chamada Mobile, dps faz-se new Mobile*/
-    mobile = new Mobile();
-    createMobile();
-    scene.add(mobile);
+	//createMobile(0,0,0); /*Acho melhor criar uma classe chamada Mobile, dps faz-se new Mobile*/
+	mobile = new Mobile();
+	createMobile();
+	scene.add(mobile);
 
 }
 
 function animate() {
-    'use strict';
+	'use strict';
 
-    /*funcoes de animacao sobre o mobile*/
-    var speed = 2;
-    // girar todo o mobile
-    if (mobile.getBranchOneRotation() != 0) {
-        if (mobile.branchOneRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
-            mobile.rotateBranch1z(0);
-        else if (mobile.branchOneRotation == 2)
-            mobile.rotateBranch1z(-0);
-    }
+	/*funcoes de animacao sobre o mobile*/
+	var speed = 2;
+	// girar todo o mobile
+	if (mobile.getBranchOneRotation() != 0) {
+		if (mobile.branchOneRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
+			mobile.rotateBranch1z(0);
+		else if (mobile.branchOneRotation == 2)
+			mobile.rotateBranch1z(-0);
+	}
 
-    //girar branch2
-    if (mobile.getBranchTwoRotation() != 0) {
-        if (mobile.branchTwoRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
-            mobile.rotateBranchTwo(0);
-        else if (mobile.branchTwoRotation == 2)
-            mobile.rotateBranchTwo(-0);
-    }
+	//girar branch2
+	if (mobile.getBranchTwoRotation() != 0) {
+		if (mobile.branchTwoRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
+			mobile.rotateBranchTwo(0);
+		else if (mobile.branchTwoRotation == 2)
+			mobile.rotateBranchTwo(-0);
+	}
 
-    //girar branch3
-    if (mobile.getBranchThreeRotation() != 0) {
-        if (mobile.branchThreeRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
-            mobile.rotateBranchThree(0);
-        else if (mobile.branchThreeRotation == 2)
-            mobile.rotateBranchThree(-0);
+	//girar branch3
+	if (mobile.getBranchThreeRotation() != 0) {
+		if (mobile.branchThreeRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
+			mobile.rotateBranchThree(0);
+		else if (mobile.branchThreeRotation == 2)
+			mobile.rotateBranchThree(-0);
 
-    }
+	}
 
-    //mover o mobile
-    if (robot.getMove() != 0) {
-        if (robot.move == 1)
-            robot.moveRobot(speed);
-        else if (robot.move == 2)
-            robot.moveRobot(-speed);
-    }
+	//mover o mobile
+	if (robot.getMove() != 0) {
+		if (robot.move == 1)
+			robot.moveRobot(speed);
+		else if (robot.move == 2)
+			robot.moveRobot(-speed);
+	}
 
-    requestAnimationFrame(animate);
-    render();
+	requestAnimationFrame(animate);
+	renderer.render(scene, camera);
 
-}
-
-
-function render() {
-    'use strict';
-    renderer.render(scene, camera);
 }
 
 function onResize() {
-    'use strict';
+	'use strict';
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    if (window.innerHeight > 0 && window.innerWidth > 0) {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-    }
+	renderer.setSize(window.innerWidth, window.innerHeight);
+	if (window.innerHeight > 0 && window.innerWidth > 0) {
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+	}
 }
 
 function onKeyDown(e) {
-    switch (e.key) {
-        case "1":
-            camera = FrontalCamera;
-            break;
+	switch (e.key) {
+		case "1":
+			camera = FrontalCamera;
+			break;
 
-        case "2":
-            camera = TopCamera;
-            break;
+		case "2":
+			camera = TopCamera;
+			break;
 
-        case "3":
-            camera = LateralCamera;
-            break;
+		case "3":
+			camera = LateralCamera;
+			break;
 
-        case "4":
-            mobile.changeWireframe();
-            break;
+		case "4":
+			mobile.changeWireframe();
+			break;
 
-        case "W":
-        case "w":   /*Rodar v1 num sentido*/
-            mobile.rotateBranchOne(0);
-            break;
+		case "W":
+		case "w":   /*Rodar v1 num sentido*/
+			mobile.rotateBranchOne(0);
+			break;
 
-        case "Q":   /*rodar v1 noutro sentido*/
-        case "q":
-            mobile.rotateBranch1Z(-0);
-            break;
+		case "Q":   /*rodar v1 noutro sentido*/
+		case "q":
+			mobile.rotateBranch1Z(-0);
+			break;
 
-        case "A":
-        case "a":
-            mobile.rotateBranch2Z(0);
-            break;
+		case "A":
+		case "a":
+			mobile.rotateBranch2Z(0);
+			break;
 
-        case "D":
-        case "d":
-            mobile.rotateBranch2Z(-0);
+		case "D":
+		case "d":
+			mobile.rotateBranch2Z(-0);
 
-        case "Z":
-        case "z":
-            mobile.rotateBranch3Z(0);
-            break;
+		case "Z":
+		case "z":
+			mobile.rotateBranch3Z(0);
+			break;
 
-        case "S":
-        case "s":
-            mobile.rotateBranch3Z(-0);
-            break;
+		case "S":
+		case "s":
+			mobile.rotateBranch3Z(-0);
+			break;
 
-        case "ArrowUp":
-            mobile.setMobileMoving(1);
-            break;
+		case "ArrowUp":
+			mobile.setMobileMoving(1);
+			break;
 
-        case "ArrowDown":
-            mobile.setMobileMoving(2);
-            break;
+		case "ArrowDown":
+			mobile.setMobileMoving(2);
+			break;
 
-        case "ArrowRight":
-            mobile.setBaseMovement(1);
-            break;
+		case "ArrowRight":
+			mobile.setBaseMovement(1);
+			break;
 
-        case "ArrowLeft":
-            mobile.setBaseMovement(1);
-            break;
-    }
+		case "ArrowLeft":
+			mobile.setBaseMovement(1);
+			break;
+	}
 }
 
 function __init__() {
-    'use strict';
+	'use strict';
 
-    renderer = new THREE.WebGLRenderer({antialias: true});
+	renderer = new THREE.WebGLRenderer({antialias: true});
+	renderer.setClearColor("black");
+	renderer.setSize(window.innerWidth, window.innerHeight);
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+	document.body.appendChild(renderer.domElement);
 
-    document.body.appendChild(renderer.domElement);
+	createScene();
+	FrontalCamera = createCamera(100, 0, 0);    //view from x
+	TopCamera = createCamera(0, 0, 100);        //view from z
+	LateralCamera = createCamera(0, 100, 0);    //view from y
 
-    createScene();
-    FrontalCamera = createCamera(100, 0, 0);    //view from x
-    TopCamera = createCamera(0, 0, 100);        //view from z
-    LateralCamera = createCamera(0, 100, 0);    //view from y
-
-    window.addEventListener("resize", onResize)
-    window.addEventListener("keydown", onKeyDown);
+	window.addEventListener("resize", onResize)
+	window.addEventListener("keydown", onKeyDown);
 }
