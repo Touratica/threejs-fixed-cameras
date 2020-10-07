@@ -1,13 +1,7 @@
 class Mobile extends Component{
-
-    branch1;
-    branch2;
-    branch3;
-    
-
     constructor(x, y, z) {
         super();
-        this.position.set(x,y,z);
+        this.position.set(x, y, z);
         this.motionX = 0;
         this.motionY = 0;
         this.rotationB1 = 0;
@@ -15,13 +9,7 @@ class Mobile extends Component{
         this.rotationB3 = 0;
     }
 
-
     //Branch1
-
-    setPositionBranch1(x, y, z){
-        this.branch1.position.set(x,y,z);
-    }
-
     rotateBranchOneZ(a) {
         this.branch1.rotateZ(a);
     }
@@ -35,18 +23,10 @@ class Mobile extends Component{
         this.add(this.branch1);
     }
 
-    
-
     //Branch2
-
-    setPositionBranch2(x,y,z){
-        this.branch2.position.set(x,y,z);
-    }
-
     rotateBranchTwoZ(a){
         this.branch2.rotateZ(a);
     }
-
 
     branchTwo(){
         return this.branch2;
@@ -57,11 +37,6 @@ class Mobile extends Component{
     }
 
     //Branch3
-
-    setPositionBranch3(x,y,z){
-        this.branch3.position.set(x,y,z);
-    }
-
     rotateBranchThreeZ(a){
         this.branch3.rotateZ(a);
     }
@@ -75,7 +50,6 @@ class Mobile extends Component{
     }
 
     //Motion
-
     setMotionX(direction) {
         switch (direction) {
             case "stop":
@@ -239,7 +213,6 @@ class Mobile extends Component{
         }
     }
 
-
     getRotationThree() {
         switch (this.rotationB3) {
             case 0:
@@ -255,10 +228,4 @@ class Mobile extends Component{
                 break;
         }
     }
-
-    /*Rotate(angle) {
-        this.rotationZ(angle);
-    }*/
-
-    
 }
