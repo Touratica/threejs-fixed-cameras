@@ -1,145 +1,264 @@
-class Mobile extends Element {
+class Mobile extends Component{
 
- 	constructor(x, y, z) {
-         super(x, y, z);
-        this.baseMovement=0;
- 		this.mobileMoving= 0;
-        this.branchOneRotation = 0;
-        this.branchTwoRotation=0;
-        this.brancThreeRotation = 0;
-       
-	 }
-
-
-     getBaseMovement(){
-		return this.baseMovement;
-	}
-
- 	setBaseMovement(baseMovement) {
- 		this.baseMovement = baseMovement;
-     }
+    branch1;
+    branch2;
+    branch3;
     
-    getMobileMoving()
-    {
-        return this.mobileMoving;
-    }
-     setMobileMoving(move) {
-        this.move = move;
-    }
-    getBranchOneRotation()
-    {
-        return this.branchOneRotation();
-    }
-    setBranchOneRotation(branchOneRotation)
-    {
-        this.branchOneRotation = branchOneRotation;
-    }
 
-    getBranchTwoRotation()
-    {
-        return this.branchTwoRotation();
-    }
-    setBranchTwoRotation(branchTwoRotation)
-    {
-        this.branchTwoRotation = branchTwoRotation;
-    }
-
-    getBranchThreeRotation()
-    {
-        return this.branchThreeRotation();
-    }
-    setBranchThreeRotation(branchThreeRotation)
-    {
-        this.branchThreeRotation = branchThreeRotation;
-    }
-
-    rotateBranchOne(angle) {
-        branchOne.rotateOnWorldAxis(new THREE.Vector3(0,0,1),angle); //vector (0,0,1) roda em torno dos z, penso, com angulo de 0 graus.
-        //this.translateX(velocity);
-    }
-    rotateBranchTwo(angle) {
-        branchTwo.rotateOnWorldAxis(new THREE.Vector3(0,0,1),angle); //vector (0,0,1) roda em torno dos z, penso, com angulo de 0 graus.
-    }
-    rotateBranchThree(angle) {
-        branchThree.rotateOnWorldAxis(new THREE.Vector3(0,0,1),angle); //vector (0,0,1) roda em torno dos z, penso, com angulo de 0 graus.
-    }
-
-    moveMobile(velocity) { /*pensar melhor nesta funcao*/
-        this.translateZ(velocity);
+    constructor(x, y, z) {
+        super();
+        this.position.set(x,y,z);
+        this.motionX = 0;
+        this.motionY = 0;
+        this.rotationB1 = 0;
+        this.rotationB2 = 0;
+        this.rotationB3 = 0;
     }
 
 
-    create(obj, x, y, z) {
-        obj.material = new THREE.MeshBasicMaterial({
-            color: 0x00ff00,
-            wireframe: true
-        });
+    //Branch1
 
-        branchOne = new THREE.Group();
-        branchTwo = new THREE.Group();
-        branchThree = new THREE.Group();
+    setPositionBranch1(x, y, z){
+        this.branch1.position.set(x,y,z);
+    }
 
-        branchOne.material = obj.material;
-        branchTwo.material = obj.material;
-        branchThree.material = obj.material;
+    rotateBranchOneZ(a) {
+        this.branch1.rotateZ(a);
+    }
 
-        //ramo 1
-        /*Linhas de codigo sem comentario sao arames*/
-        obj.addCylinderVertical(branchOne,0,0,0,0.1,5); 
-        obj.addCylinderHorizontal(branchOne,0,0,-5,0.1,6);
-        obj.addCylinderVertical(branchOne,0,-3,-5,2,1); //Cilindro 1
-        obj.addCylinderVertical(branchOne,0,3,-6,0.1,2);
-        obj.addCylinderHorizontal(branchOne,0,3,-7,0.1,8);
-        obj.addParallelepipedVertical(branchOne,0,8,-7,2,2,2); //quadrado 2
-        obj.addCylinderVertical(branchOne,0,-1,-8,0.1,2);
-        obj.addCylinderHorizontal(branchOne,0,-3,-9,0.1,6);
-        obj.addCylinderVertical(branchOne,0,-6,-9,5,0.1,1);
-        obj.addCylinderVertical(branchOne,0,-6,-11,1,2); //cilindro 3
-        obj.addCylinderVertical(branchOne,0,0,-10,0.1,2);
-        obj.addCylinderHorizontal(branchOne,0,1,-11,0.1,6);
-        obj.addCylinderVertical(branchOne,0,1,-11.5,0.1,1);
-        obj.addCylinderVertical(branchOne,0,-2,-13.5,2,3); //cilindro 4
-        obj.addCylinderVertical(branchOne,0,4,-11.5,0.1,1);
-        obj.addCylinderHorizontal(branchOne,0,5,-12,0.1,4);
-        obj.addCylinderVertical(branchOne,0,3,-12,1,1); //cilindro 5
+    branchOne(){
+        return this.branch1;
+    }
 
-
-        //ramo 2
-        obj.addCylinderVertical(branchTwo,0,4,-12,0.1,2);
-        obj.addCylinderHorizontal(branchTwo,0,3.5,-13,0.1,5);
-        obj.addParallelepipedVertical(branchTwo,0,0.5,-13,1,1,1);//quadrado 6
-        obj.addCylinderVertical(branchTwo,0,6,-14,0.1,2);
-        obj.addCylinderHorizontal(branchTwo,0,6.5,-15,0.1,9);
-        obj.addCylinderHorizontal(branchTwo,0,1.5,-15,1,1); //cilindro 7
-        obj.addCylinderVertical(branchTwo,0,11,-16,0.1,2);
-        obj.addCylinderHorizontal(branchTwo,0,9.5,-17,0.1,7);
-        obj.addCylinderHorizontal(branchTwo,0,14,-17,3,2); //cilindro 8
-
-        //ramo 3
-        obj.addCylinderVertical(branchThree,0,6,-18,0.1,2);
-        obj.addCylinderHorizontal(branchThree,0,6,-19,0.1,4);
-        obj.addCylinderHorizontal(branchThree,0,3.5,-18,1,1); //cilindro 9
-        obj.addParallelepipedVertical(branchThree,0,8.5,-18,1,1,1);//quadrado 10
-
-        /*Adicionar translacoes e rotacoes? 
-        ramo1.translateY();*/
-
-        obj.add(branchOne);
-        obj.add(branchTwo);
-        obj.add(branchThree);
- 		scene.add(obj);
-        
-        obj.position.x = x;
- 		obj.position.y = y;
- 		obj.position.z = z;
-
-
-       
-
-      
+    setBranchOne(c){
+        this.branch1=c;
+        this.add(this.branch1);
     }
 
     
 
+    //Branch2
 
+    setPositionBranch2(x,y,z){
+        this.branch2.position.set(x,y,z);
+    }
+
+    rotateBranchTwoZ(a){
+        this.branch2.rotateZ(a);
+    }
+
+
+    branchTwo(){
+        return this.branch2;
+    }
+
+    setBranchTwo(c){
+        this.branch2=c;
+    }
+
+    //Branch3
+
+    setPositionBranch3(x,y,z){
+        this.branch3.position.set(x,y,z);
+    }
+
+    rotateBranchThreeZ(a){
+        this.branch3.rotateZ(a);
+    }
+
+    branchThree(){
+        return this.branch3;
+    }
+
+    setBranchThree(c){
+        this.branch3=c;
+    }
+
+    //Motion
+
+    setMotionX(direction) {
+        switch (direction) {
+            case "stop":
+                this.motionX = 0;
+                break;
+
+            case "forward":
+                this.motionX = 1;
+                break;
+
+            case "backward":
+                this.motionX = -1;
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    setMotionY(direction) {
+        switch (direction) {
+            case "stop":
+                this.motionY = 0;
+                break;
+
+            case "right":
+                this.motionY = 1;
+                break;
+    
+            case "left":
+                this.motionY = -1;
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    getMotionX() {
+        switch (this.motionX) {
+            case 0:
+                return "stop";
+
+            case 1:
+                return "forward";
+
+            case -1:
+                return "backward";
+    
+            default:
+                break;
+        }
+    }
+
+    getMotionY() {
+        switch (this.motionY) {
+            case 0:
+                return "stop";
+
+            case 1:
+                return "right";
+
+            case -1:
+                return "left";
+
+            default:
+                break;
+        }
+    }
+
+    moveLeft(distance) {
+        this.translateY(-distance);
+    }
+
+    moveRight(distance) {
+        this.translateY(distance);
+    }
+
+    moveForward(distance) {
+        this.translateX(-distance);
+    }
+
+    moveBackward(distance) {
+        this.translateX(distance);
+    }
+
+    //Rotation
+
+    setRotation(rotation) {
+        switch (rotation) {
+            case "stopB1":
+                this.rotationB1 = 0;
+                break;
+
+            case "stopB2":
+                this.rotationB2 = 0;
+                break;
+
+            case "stopB3":
+                this.rotationB3 = 0;
+                break;
+
+            case "rotateB1P":
+                this.rotationB1 = 1;
+                break;
+
+            case "rotateB1N":
+                this.rotationB1 = 2;
+                break;
+
+            case "rotateB2P":
+                this.rotationB2 = 1;
+                break;
+
+            case "rotateB2N":
+                this.rotationB2 = 2;
+                break;
+            
+            case "rotateB3P":
+                this.rotationB3 = 1;
+                break;
+
+            case "rotateB3N":
+                this.rotationB3 = 2;
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    getRotationOne() {
+        switch (this.rotationB1) {
+            case 0:
+                return "stopB1";
+
+            case 1:
+                return "rotateB1P";
+
+            case 2:
+                return "rotateB1N";
+
+            default:
+                break;
+        }
+    }
+
+    getRotationTwo() {
+        switch (this.rotationB2) {
+            case 0:
+                return "stopB2";
+
+            case 1:
+                return "rotateB2P";
+
+            case 2:
+                return "rotateB2N";
+
+            default:
+                break;
+        }
+    }
+
+
+    getRotationThree() {
+        switch (this.rotationB3) {
+            case 0:
+                return "stopB3";
+
+            case 1:
+                return "rotateB3P";
+
+            case 2:
+                return "rotateB3N";
+
+            default:
+                break;
+        }
+    }
+
+    /*Rotate(angle) {
+        this.rotationZ(angle);
+    }*/
+
+    
 }
