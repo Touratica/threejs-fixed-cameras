@@ -79,7 +79,7 @@ function create_G2_1(){
 	comp1.addCylinderHorizontal(objMaterial, 0,- hEst14/2 - bCil5/ 2, 0, bCil5, hCil5);
 	comp1.addComponent(group, 0, hEst14/2 + wireThickness / 2 , 0);
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hEst13 / -2, wireThickness, hEst13);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hEst13 / -2, wireThickness, hEst13);
 	comp2.addComponent(comp1, 0, (1/18)*hEst14, -hEst13 - wireThickness / 2);
 
 	return comp2;
@@ -104,7 +104,7 @@ function create_G2() {
 	comp1.addCuboid(objMaterial, 0,- hEst12/2 - dCubo3/ 2, 0, wCubo3, hCubo3,dCubo3);
 	comp1.addComponent(group, 0, hEst12/2 + wireThickness / 2 , 0);
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hV2 / -2, wireThickness, hV2);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hV2 / -2, wireThickness, hV2);
 	comp2.addComponent(comp1, 0, (-1/10)*hEst12, -hV2 - wireThickness / 2);
 
 	mobile.setBranchTwo(comp2);
@@ -132,7 +132,7 @@ function create_G1_4(){
 	comp1.addCylinderHorizontal(objMaterial, 0,- hEst11/2 - bCil4/ 2, 0, bCil4, hCil4);
 	comp1.addComponent(group, 0, hEst11/2 + wireThickness / 2 , 0);
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hEst10 / -2, wireThickness, hEst10);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hEst10 / -2, wireThickness, hEst10);
 	comp2.addComponent(comp1, 0, (1/4)*hEst11, -hEst10 - wireThickness / 2);
 
 	return comp2;	
@@ -159,8 +159,8 @@ function create_G1_3(){
 	comp1.addCylinderVertical(objMaterial, 0,- hEst8/2 - bCil3/ 2, -hest9,bCil3,hCil3);
 	comp1.addComponent(group, 0, hEst8/2 + wireThickness / 2 , 0);
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hEst7 / -2, wireThickness, hEst7);
-	comp2.addComponent(comp1, 0, -hEst8/2 + (1/6)*hEst8, -hEst7 - wireThickness / 2);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hEst7 / -2, wireThickness, hEst7);
+	comp2.addComponent(comp1, 0, (1/6)*hEst8, -hEst7 - wireThickness / 2);
 
 	return comp2;
 }
@@ -177,18 +177,17 @@ function create_G1_2(){
 
 	var hEst5 = 6;
 	var hEst6 = 1;
-	var hEst7 = 2;
 	var hEst4 = 2;
 	var hcil2= 2 , bcil2= 1;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst5);
 
-	comp1.addCylinderVertical(objMaterial, 0,  -bcil2/2-hEst6/2, - hEst6 - wireThickness, bcil2, hcil2); 
-	comp1.addCylinderVertical(estMaterial, 0,- hEst5/2 - wireThickness / 2, 0, wireThickness , hEst6); 
-	comp1.addComponent(group, 0, hEst5/2 + wireThickness / 2 , - hEst7 - wireThickness/2);
+	comp1.addCylinderVertical(objMaterial, 0, -hEst5/2, - hEst6 - wireThickness -bcil2/2, bcil2, hcil2); 
+	comp1.addCylinderVertical(estMaterial, 0,- hEst5/2 - wireThickness / 2, -hEst6/2, wireThickness , hEst6); 
+	comp1.addComponent(group, 0, hEst5/2 + wireThickness / 2 , 0);
 	
-	comp2.addCylinderVertical(estMaterial, 0, -hEst4/2, -hEst4*(3/2), wireThickness, hEst4); //changed yy and zz
-	comp2.addComponent(comp1, 0, (-2/6)*hEst5, -hEst4 - wireThickness / 2);
+	comp2.addCylinderVertical(estMaterial, 0, 0, -hEst4/2, wireThickness, hEst4); 
+	comp2.addComponent(comp1, 0, (-2/6)*hEst5, -hEst4 - wireThickness /2);
 
 	return comp2;	
 }
@@ -208,10 +207,10 @@ function create_G1_1()
 	let hEst2= 2.5;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst3);
-	comp1.addCuboid(objMaterial, 0,-hEst3/2 + wCub2 / 2,  0, wCub2, hCub2, dCub2); 
+	comp1.addCuboid(objMaterial, 0,hEst3/2 + wCub2 / 2,  0, wCub2, hCub2, dCub2); 
 	comp1.addComponent(group, 0, - hEst3/2 - wireThickness / 2 , 0);
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hEst2 / -2, wireThickness, hEst2);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hEst2 / -2, wireThickness, hEst2);
 	comp2.addComponent(comp1, 0, 0, -hEst2 - wireThickness / 2); 
 
 	return comp2;
@@ -232,11 +231,11 @@ function create_G1()
 	var hV1 = 5;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst1);
-	comp1.addCylinderVertical(objMaterial, 0,0, hEst1/2  + bCil1/ 2,bCil1,hCil1);
-	comp1.addComponent(group, 0,-wireThickness,  -hEst1/4 - wireThickness / 2); 
+	comp1.addCylinderVertical(objMaterial, 0,-hEst1/2  - bCil1/ 2, 0,bCil1,hCil1);
+	comp1.addComponent(group, 0,hEst1/2+ wireThickness/2 , 0); 
 	
-	comp2.addCylinderVertical(estMaterial, 0, hV1 / -2, wireThickness, 0, hV1); 
-	comp2.addComponent(comp1, 0, 0, -hV1/2 - wireThickness / 2);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hV1/-2, wireThickness, hV1); 
+	comp2.addComponent(comp1, 0, 0, -hV1- wireThickness / 2);
 	mobile.setBranchOne(comp2);
 
 	return mobile.branchOne();

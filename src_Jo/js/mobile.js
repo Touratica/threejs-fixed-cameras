@@ -65,4 +65,20 @@ class Mobile extends Component {
     setBranchThree(c){
         this.branch3=c;
     }
+
+    moveLeft(speed) {
+        this.position.x -= speed;
+    }
+
+    moveRight(speed) {
+        this.position.x += speed;
+    }
+
+    moveForward(speed) {
+        this.position.z -= speed;
+    }
+
+    moveBackwards(speed) {
+        this.position.z += 
+    }
 }
