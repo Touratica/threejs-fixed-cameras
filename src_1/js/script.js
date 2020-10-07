@@ -3,7 +3,7 @@ var camera, FrontalCamera, TopCamera, LateralCamera;
 var scene, renderer;
 var mobile, branchOne, branchTwo, branchThree;
 var wireThickness = 0.1;
-
+let viewWidth = 75;
 
 function create_G3() {
 	let comp1 = new Component();
@@ -21,7 +21,7 @@ function create_G3() {
 	comp1.addCylinderVertical(objMaterial, 0, - hEst17/2 - bCil6 / 2, 0, bCil6, hCil6);
 	comp1.addCuboid(objMaterial, 0, hEst17/2 + wCub4 / 2, 0, wCub4, hCub4, dCub4);
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hV3 / -2, wireThickness, hV3);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hV3 / -2, wireThickness, hV3);
 	comp2.addComponent(comp1, 0, 0, -hV3 - wireThickness / 2);
 
 	mobile.setBranchThree(comp2);
@@ -47,7 +47,7 @@ function create_G2_2(){
 	comp1.addCylinderVertical(objMaterial, 0, hEst16/2 + bCil7 / 2, 0, bCil7, hCil7);
 	comp1.addComponent(group, 0, -hEst16/2 - wireThickness / 2 , 0);
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hest15 / -2, wireThickness, hest15);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hest15 / -2, wireThickness, hest15);
 	comp2.addComponent(comp1, 0, (-3/14)*hEst16, -hest15 - wireThickness / 2);
 
 	return comp2;
@@ -82,15 +82,10 @@ function create_G2_1(){
 	comp2.addComponent(comp1, 0, (1/18)*hEst14, -hEst13 - wireThickness / 2);
 
 	return comp2;
-	
-
-
 }
 
 
 function create_G2() {
-
-	
 	let comp1 = new Component();
 	let comp2 = new Component();
 
@@ -174,7 +169,7 @@ function create_G1_2(){
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	//var group = create_G1_3(); 
+	var group = create_G1_3(); 
 	
 	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
 	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
@@ -186,9 +181,10 @@ function create_G1_2(){
 	var hcil2= 2 , bcil2= 1;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst5);
-	comp1.addCylinderVertical(objMaterial, 0,  -hcil2/2-hEst6/2, - hEst6 -hcil2/2, bcil2, hcil2); //estava a mudar aqui 
-	comp1.addCylinderVertical(estMaterial, 0, -wireThickness/2, hEst5/2 + wireThickness / 2, wireThickness , hEst6); //pus y no z, e adicionei ao y
-	//comp1.addComponent(group, 0, hEst5/2 + wireThickness / 2 , - hEst7 - wireThickness/2);
+
+	comp1.addCylinderVertical(objMaterial, 0,  -bcil2/2-hEst6/2, - hEst6 - wireThickness, bcil2, hcil2); 
+	comp1.addCylinderVertical(estMaterial, 0,- hEst5/2 - wireThickness / 2, 0, wireThickness , hEst6); 
+	comp1.addComponent(group, 0, hEst5/2 + wireThickness / 2 , - hEst7 - wireThickness/2);
 	
 	comp2.addCylinderVertical(estMaterial, 0, -hEst4/2, -hEst4*(3/2), wireThickness, hEst4); //changed yy and zz
 	comp2.addComponent(comp1, 0, (-2/6)*hEst5, -hEst4 - wireThickness / 2);
@@ -211,11 +207,11 @@ function create_G1_1()
 	let hEst2= 2.5;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst3);
-	comp1.addCuboid(objMaterial, 0,0,  -hEst3/2 + wCub2 / 2, wCub2, hCub2, dCub2); //change to z
+	comp1.addCuboid(objMaterial, 0,-hEst3/2 + wCub2 / 2,  0, wCub2, hCub2, dCub2); 
 	comp1.addComponent(group, 0, - hEst3/2 - wireThickness / 2 , 0);
 	
 	comp2.addCylinderVertical(objMaterial, 0, 0, hEst2 / -2, wireThickness, hEst2);
-	comp2.addComponent(comp1, 0, -hEst2/2, -hEst2 - wireThickness / 2); //add here y 
+	comp2.addComponent(comp1, 0, 0, -hEst2 - wireThickness / 2); 
 
 	return comp2;
 }
@@ -238,9 +234,8 @@ function create_G1()
 	comp1.addCylinderVertical(objMaterial, 0,0, hEst1/2  + bCil1/ 2,bCil1,hCil1);
 	comp1.addComponent(group, 0,-wireThickness,  -hEst1/4 - wireThickness / 2); 
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hV1 / -2, wireThickness, hV1); //Mudei aqui tb do y p z
-	comp2.addComponent(comp1, 0, -hV1/2, -hV1/2 - wireThickness / 2); //change here
-	//(AFINAL AQUELA TRANSLACAO A DIVIDIR POR 2 FAZIA SENTIDO?!)
+	comp2.addCylinderVertical(estMaterial, 0, hV1 / -2, wireThickness, 0, hV1); 
+	comp2.addComponent(comp1, 0, 0, -hV1/2 - wireThickness / 2);
 	mobile.setBranchOne(comp2);
 
 	return mobile.branchOne();
@@ -252,16 +247,15 @@ function createMobile() {
 
 function createCamera(x, y, z) {
 	'use strict';
-	let viewWidth = 35;
-	let viewHeight = 44;
+	let viewHeight = viewWidth * innerHeight / innerWidth;
 
 	camera = new THREE.OrthographicCamera(viewWidth / -2, viewWidth / 2,
-		viewHeight / 2, viewHeight / -2, 1, 1000);
+		viewHeight / 2, viewHeight / -2, 0, 1000);
 	camera.position.x = x;
 	camera.position.y = y;
 	camera.position.z = z;
 	camera.lookAt(scene.position);
-	camera.aspect = window.innerWidth / window.innerHeight;
+	onResize();
 	return camera;
 }
 
@@ -276,7 +270,7 @@ function createScene() {
 	eixo cor verde = eixo dos zz */
 	mobile = new Mobile(10,10,10);
 	createMobile();
-	scene.add(mobile);
+	scene.add(mobile);	
 }
 
 function animate() {
@@ -320,9 +314,13 @@ function onResize() {
 
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	if (window.innerHeight > 0 && window.innerWidth > 0) {
-		camera.aspect = window.innerWidth / window.innerHeight;
+		let viewHeight = viewWidth * innerHeight / innerWidth;
+		camera.top = viewHeight / 2;
+		camera.bottom = viewHeight / -2;
+		
+/* 		camera.aspect = window.innerWidth / window.innerHeight;
 		camera.updateProjectionMatrix();
-	}
+ */	}
 }
 
 function onKeyDown(e) {
@@ -400,9 +398,9 @@ function __init__() {
 	document.body.appendChild(renderer.domElement);
 
 	createScene();
-	FrontalCamera = createCamera(100, 0, 0);    //view from x
 	TopCamera = createCamera(0, 0, 100);        //view from z
 	LateralCamera = createCamera(0, 100, 0);    //view from y
+	FrontalCamera = createCamera(100, 0, 0);    //view from x
 
 	window.addEventListener("resize", onResize)
 	window.addEventListener("keydown", onKeyDown);
