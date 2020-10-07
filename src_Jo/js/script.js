@@ -296,6 +296,7 @@ function animate() {
 			mobile.moveLeft(time * speed);
 		}
 
+
 	requestAnimationFrame(animate);
 	renderer.render(scene, camera);
 }
