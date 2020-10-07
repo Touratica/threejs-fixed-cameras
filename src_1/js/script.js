@@ -2,7 +2,7 @@
 var camera, FrontalCamera, TopCamera, LateralCamera;
 var scene, renderer;
 var mobile, branchOne, branchTwo, branchThree;
-var wireThickness = 0.5;
+var wireThickness = 0.1;
 
 
 function create_G3() {
@@ -174,7 +174,7 @@ function create_G1_2(){
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G1_3(); 
+	//var group = create_G1_3(); 
 	
 	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
 	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
@@ -186,12 +186,11 @@ function create_G1_2(){
 	var hcil2= 2 , bcil2= 1;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst5);
-	comp1.addCylinderVertical(objMaterial, 0, - hEst5/2 - bcil2 / 2, - hEst6 -hcil2/2, bcil2, hcil2);
-	comp1.addCylinderVertical(objMaterial, 0, -hEst5/2 - wireThickness / 2, 0, wireThickness , hEst6);
-	comp1.addCylinderVertical(objMaterial, 0, hEst5/2 + wireThickness / 2, 0, wireThickness , hEst6);
-	comp1.addComponent(group, 0, hEst5/2 + wireThickness / 2 , - hEst7 - wireThickness/2);
+	comp1.addCylinderVertical(objMaterial, 0,  -hcil2/2-hEst6/2, - hEst6 -hcil2/2, bcil2, hcil2); //estava a mudar aqui 
+	comp1.addCylinderVertical(estMaterial, 0, -wireThickness/2, hEst5/2 + wireThickness / 2, wireThickness , hEst6); //pus y no z, e adicionei ao y
+	//comp1.addComponent(group, 0, hEst5/2 + wireThickness / 2 , - hEst7 - wireThickness/2);
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hEst4 / -2, wireThickness, hEst4);
+	comp2.addCylinderVertical(estMaterial, 0, -hEst4/2, -hEst4*(3/2), wireThickness, hEst4); //changed yy and zz
 	comp2.addComponent(comp1, 0, (-2/6)*hEst5, -hEst4 - wireThickness / 2);
 
 	return comp2;	
@@ -209,14 +208,14 @@ function create_G1_1()
 
 	let wCub2 = 1, hCub2 = 1, dCub2 = 1;
 	let hEst3= 8;
-	let hEst2= 2;
+	let hEst2= 2.5;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst3);
-	comp1.addCuboid(objMaterial, 0, hEst3/2 + wCub2 / 2, 0, wCub2, hCub2, dCub2);
+	comp1.addCuboid(objMaterial, 0,0,  -hEst3/2 + wCub2 / 2, wCub2, hCub2, dCub2); //change to z
 	comp1.addComponent(group, 0, - hEst3/2 - wireThickness / 2 , 0);
 	
 	comp2.addCylinderVertical(objMaterial, 0, 0, hEst2 / -2, wireThickness, hEst2);
-	comp2.addComponent(comp1, 0, 0, -hEst2 - wireThickness / 2);
+	comp2.addComponent(comp1, 0, -hEst2/2, -hEst2 - wireThickness / 2); //add here y 
 
 	return comp2;
 }
@@ -236,12 +235,12 @@ function create_G1()
 	var hV1 = 5;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst1);
-	comp1.addCylinderVertical(objMaterial, 0,- hEst1/2 - bCil1/ 2, 0,bCil1,hCil1);
-	comp1.addComponent(group, 0, hEst1/2 + wireThickness / 2 , 0); 
+	comp1.addCylinderVertical(objMaterial, 0,0, hEst1/2  + bCil1/ 2,bCil1,hCil1);
+	comp1.addComponent(group, 0,-wireThickness,  -hEst1/4 - wireThickness / 2); 
 	
-	comp2.addCylinderVertical(objMaterial, 0, 0, hV1 / -2, wireThickness, hV1);
-	comp2.addComponent(comp1, 0, 0, -hV1 - wireThickness / 2);//transl. hv1/2 está correta aqui ? 
-
+	comp2.addCylinderVertical(objMaterial, 0, 0, hV1 / -2, wireThickness, hV1); //Mudei aqui tb do y p z
+	comp2.addComponent(comp1, 0, -hV1/2, -hV1/2 - wireThickness / 2); //change here
+	//(AFINAL AQUELA TRANSLACAO A DIVIDIR POR 2 FAZIA SENTIDO?!)
 	mobile.setBranchOne(comp2);
 
 	return mobile.branchOne();
@@ -262,6 +261,7 @@ function createCamera(x, y, z) {
 	camera.position.y = y;
 	camera.position.z = z;
 	camera.lookAt(scene.position);
+	camera.aspect = window.innerWidth / window.innerHeight;
 	return camera;
 }
 
@@ -274,7 +274,7 @@ function createScene() {
 	eixo cor vermelha = eixo dos xx
 	eixo cor azul = eixo dos yy
 	eixo cor verde = eixo dos zz */
-	mobile = new Mobile(0,0,0);
+	mobile = new Mobile(10,10,10);
 	createMobile();
 	scene.add(mobile);
 }
