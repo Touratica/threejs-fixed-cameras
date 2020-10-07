@@ -12,7 +12,7 @@ class Component extends THREE.Object3D {
     }
 
     addCylinderVertical(material, x, y, z, base, height) {
-        let geometry = new THREE.CylinderGeometry(base / 2, base / 2, height, 64, 1);
+        let geometry = new THREE.CylinderGeometry(base / 2, base / 2, height, 16, 1);
         let mesh= new THREE.Mesh(geometry, material);
         this.material = material;
         this.material.wireframe=true;
@@ -22,7 +22,7 @@ class Component extends THREE.Object3D {
     }
     
     addCylinderHorizontal(material, x, y, z, base, height) {
-        let geometry = new THREE.CylinderGeometry(base / 2, base / 2, height, 64, 1);
+        let geometry = new THREE.CylinderGeometry(base / 2, base / 2, height, 16, 1);
         let mesh= new THREE.Mesh(geometry, material);
         this.material = material;
         this.material.wireframe=true;

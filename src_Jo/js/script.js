@@ -1,9 +1,9 @@
 /*global THREE*/
-var camera, FrontalCamera, TopCamera, LateralCamera;
-var scene, renderer;
+let camera, FrontalCamera, TopCamera, LateralCamera;
+let scene, renderer;
 let clock = new THREE.Clock();
-var mobile, branchOne, branchTwo, branchThree;
-var wireThickness = 0.1;
+let mobile, branchOne, branchTwo, branchThree;
+let wireThickness = .1;
 let viewWidth = 75;
 THREE.Object3D.DefaultUp.set(0, 0, 1);
 
@@ -37,18 +37,18 @@ function create_G2_2(){
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G3();
+	let group = create_G3();
 
-	var hest15 = 2;
-	var hEst16 = 7;
-	var bCil7 = 2, hCil7 = 3;
+	let hEst15 = 2;
+	let hEst16 = 7;
+	let bCil7 = 2, hCil7 = 3;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst16);
 	comp1.addCylinderVertical(objMaterial, 0, hEst16/2 + bCil7 / 2, 0, bCil7, hCil7);
 	comp1.addComponent(group, 0, -hEst16/2 - wireThickness / 2 , 0);
 	
-	comp2.addCylinderVertical(estMaterial, 0, 0, hest15 / -2, wireThickness, hest15);
-	comp2.addComponent(comp1, 0, (-3/14)*hEst16, -hest15 - wireThickness / 2);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hEst15 / -2, wireThickness, hEst15);
+	comp2.addComponent(comp1, 0, (-3/14)*hEst16, -hEst15 - wireThickness / 2);
 
 	return comp2;
 }
@@ -58,11 +58,11 @@ function create_G2_1(){
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G2_2(); 
+	let group = create_G2_2(); 
 
-	var bCil5 = 1, hCil5 = 1;
-	var hEst14 = 9;
-	var hEst13 = 2;
+	let bCil5 = 1, hCil5 = 1;
+	let hEst14 = 9;
+	let hEst13 = 2;
 
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst14);
@@ -79,11 +79,11 @@ function create_G2() {
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G2_1(); 
+	let group = create_G2_1(); 
 
-	var dCubo3 = 1, hCubo3= 1 , wCubo3=1;
-	var hEst12=5;
-	var hV2 = 2;
+	let dCubo3 = 1, hCubo3= 1 , wCubo3=1;
+	let hEst12=5;
+	let hV2 = 2;
 
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst12);
@@ -104,11 +104,11 @@ function create_G1_4(){
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G2(); 
+	let group = create_G2(); 
 
-	var hCil4 = 1 , bCil4= 1;
-	var hEst11=4;
-	var hEst10 = 1;
+	let hCil4 = 1 , bCil4= 1;
+	let hEst11=4;
+	let hEst10 = 1;
 
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst11);
@@ -126,17 +126,17 @@ function create_G1_3(){
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G1_4(); 
+	let group = create_G1_4(); 
 
-	var hCil3= 1 , bCil3=1;
-	var hEst8=6;
-	var hEst7 = 2;
-	var hest9= 1;
+	let hCil3 = 1 , bCil3=1;
+	let hEst8 = 6;
+	let hEst7 = 2;
+	let hEst9 = 1;
 
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst8);
-	comp1.addCylinderVertical(estMaterial,0,hEst8/-2 - wireThickness/2,-hest9/2,wireThickness,hest9);
-	comp1.addCylinderVertical(objMaterial, 0,- hEst8/2 - bCil3/ 2, -hest9,bCil3,hCil3);
+	comp1.addCylinderVertical(estMaterial,0,hEst8/-2 - wireThickness/2, -hEst9 / 2, wireThickness, hEst9);
+	comp1.addCylinderVertical(objMaterial, 0, -hEst8/2 - wireThickness / 2, -hEst9 - hCil3/2,bCil3,hCil3);
 	comp1.addComponent(group, 0, hEst8/2 + wireThickness / 2 , 0);
 	
 	comp2.addCylinderVertical(estMaterial, 0, 0, hEst7 / -2, wireThickness, hEst7);
@@ -150,18 +150,18 @@ function create_G1_2(){
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G1_3(); 
+	let group = create_G1_3(); 
 
-	var hEst5 = 6;
-	var hEst6 = 1;
-	var hEst4 = 2;
-	var hcil2= 2 , bcil2= 1;
+	let hEst5 = 6;
+	let hEst6 = 1;
+	let hEst4 = 2;
+	let hcil2 = 2, bcil2 = 1;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst5);
 
-	comp1.addCylinderVertical(objMaterial, 0, -hEst5/2, - hEst6 - wireThickness -bcil2/2, bcil2, hcil2); 
-	comp1.addCylinderVertical(estMaterial, 0,- hEst5/2 - wireThickness / 2, -hEst6/2, wireThickness , hEst6); 
-	comp1.addComponent(group, 0, hEst5/2 + wireThickness / 2 , 0);
+	comp1.addCylinderVertical(objMaterial, 0, -hEst5 / 2 - wireThickness / 2, -hcil2 / 2 - hEst6, bcil2, hcil2); 
+	comp1.addCylinderVertical(estMaterial, 0, -hEst5 / 2 - wireThickness / 2, -hEst6 / 2, wireThickness , hEst6); 
+	comp1.addComponent(group, 0, hEst5 / 2 + wireThickness / 2 , 0);
 	
 	comp2.addCylinderVertical(estMaterial, 0, 0, -hEst4/2, wireThickness, hEst4); 
 	comp2.addComponent(comp1, 0, (-2/6)*hEst5, -hEst4 - wireThickness /2);
@@ -174,15 +174,15 @@ function create_G1_1()
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G1_2(); 
+	let group = create_G1_2(); 
 
 	let wCub2 = 1, hCub2 = 1, dCub2 = 1;
-	let hEst3= 8;
-	let hEst2= 2.5;
+	let hEst3 = 8;
+	let hEst2 = 2.5;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst3);
-	comp1.addCuboid(objMaterial, 0,hEst3/2 + wCub2 / 2,  0, wCub2, hCub2, dCub2); 
-	comp1.addComponent(group, 0, - hEst3/2 - wireThickness / 2 , 0);
+	comp1.addCuboid(objMaterial, 0, hEst3 / 2 + wCub2 / 2,  0, wCub2, hCub2, dCub2); 
+	comp1.addComponent(group, 0, -hEst3 / 2 - wireThickness / 2 , 0);
 	
 	comp2.addCylinderVertical(estMaterial, 0, 0, hEst2 / -2, wireThickness, hEst2);
 	comp2.addComponent(comp1, 0, 0, -hEst2 - wireThickness / 2); 
@@ -195,20 +195,20 @@ function create_G1()
 	let comp1 = new Component();
 	let comp2 = new Component();
 
-	var group = create_G1_1(); 
+	let group = create_G1_1(); 
 	
 	
 
-	var hCil1= 2 , bCil1=1;
-	var hEst1=6;
-	var hV1 = 5;
+	let hCil1 = 2, bCil1 = 1;
+	let hEst1 = 6;
+	let hV1 = 5;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst1);
-	comp1.addCylinderVertical(objMaterial, 0,-hEst1/2  - bCil1/ 2, 0,bCil1,hCil1);
-	comp1.addComponent(group, 0,hEst1/2+ wireThickness/2 , 0); 
+	comp1.addCylinderVertical(objMaterial, 0, -hEst1 / 2  - bCil1 / 2, 0, bCil1, hCil1);
+	comp1.addComponent(group, 0, hEst1 / 2 + wireThickness / 2 , 0); 
 	
-	comp2.addCylinderVertical(estMaterial, 0, 0, hV1/-2, wireThickness, hV1); 
-	comp2.addComponent(comp1, 0, 0, -hV1- wireThickness / 2);
+	comp2.addCylinderVertical(estMaterial, 0, 0, hV1 / -2, wireThickness, hV1); 
+	comp2.addComponent(comp1, 0, 0, -hV1 - wireThickness / 2);
 	mobile.setBranchOne(comp2);
 
 	return mobile.branchOne();
@@ -241,7 +241,7 @@ function createScene() {
 	eixo cor vermelha = eixo dos xx
 	eixo cor azul = eixo dos zz
 	eixo cor verde = eixo dos yy
- */	mobile = new Mobile(10,10,10);
+ */	mobile = new Mobile(0, 0, 10);
 	createMobile();
 	scene.add(mobile);	
 }
@@ -250,9 +250,9 @@ function animate() {
 	'use strict';
 
 	// Mobile animation functions
-	var speed = 5;
+	let speed = 5;
 	let time = clock.getDelta();
-	let angSpeed = 5;
+	let angSpeed = 1;
 
 	
 	//rotate B1
@@ -329,15 +329,14 @@ function onKeyDown(e) {
 			break;
 
 		case "4":
-
-			// mobile.toggleWireframe(); TODO: Use flags
+			// mobile.toggleWireframe(); TODO: Use function?
 			objMaterial.wireframe = !objMaterial.wireframe;
 			estMaterial.wireframe = !objMaterial.wireframe;
 			break;
 
 		case "W":
 		case "w":
-			mobile.setRotation("rotateB1P");   
+			mobile.setRotation("rotateB1P");
 			break;
 
 		case "Q": 
@@ -353,7 +352,7 @@ function onKeyDown(e) {
 		case "D":
 		case "d":
 			mobile.setRotation("rotateB2N");
-
+			break;
 		case "Z":
 		case "z":
 			mobile.setRotation("rotateB3P");

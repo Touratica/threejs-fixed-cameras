@@ -147,19 +147,19 @@ class Mobile extends Component{
     }
 
     moveLeft(distance) {
-        this.translateX(-distance);
-    }
-
-    moveRight(distance) {
-        this.translateX(distance);
-    }
-
-    moveForward(distance) {
         this.translateY(-distance);
     }
 
-    moveBackward(distance) {
+    moveRight(distance) {
         this.translateY(distance);
+    }
+
+    moveForward(distance) {
+        this.translateX(-distance);
+    }
+
+    moveBackward(distance) {
+        this.translateX(distance);
     }
 
     //Rotation
