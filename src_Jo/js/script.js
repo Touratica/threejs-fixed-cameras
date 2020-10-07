@@ -1,17 +1,19 @@
 /*global THREE*/
 var camera, FrontalCamera, TopCamera, LateralCamera;
 var scene, renderer;
+let clock = new THREE.Clock();
 var mobile, branchOne, branchTwo, branchThree;
 var wireThickness = 0.1;
 let viewWidth = 75;
 THREE.Object3D.DefaultUp.set(0, 0, 1);
 
+let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000, wireframe: true});
+let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00 ,wireframe: true});
+
+
 function create_G3() {
 	let comp1 = new Component();
 	let comp2 = new Component();
-	
-	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
 
 	let hV3 = 2;
 	let hEst17 = 4; 
@@ -36,9 +38,6 @@ function create_G2_2(){
 	let comp2 = new Component();
 
 	var group = create_G3();
-	
-	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
 
 	var hest15 = 2;
 	var hEst16 = 7;
@@ -54,25 +53,16 @@ function create_G2_2(){
 	return comp2;
 }
 
-
-
-
-
-
 function create_G2_1(){
 	
 	let comp1 = new Component();
 	let comp2 = new Component();
 
 	var group = create_G2_2(); 
-	
-	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
 
 	var bCil5 = 1, hCil5 = 1;
 	var hEst14 = 9;
 	var hEst13 = 2;
-
 
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst14);
@@ -85,15 +75,11 @@ function create_G2_1(){
 	return comp2;
 }
 
-
 function create_G2() {
 	let comp1 = new Component();
 	let comp2 = new Component();
 
 	var group = create_G2_1(); 
-	
-	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
 
 	var dCubo3 = 1, hCubo3= 1 , wCubo3=1;
 	var hEst12=5;
@@ -119,9 +105,6 @@ function create_G1_4(){
 	let comp2 = new Component();
 
 	var group = create_G2(); 
-	
-	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
 
 	var hCil4 = 1 , bCil4= 1;
 	var hEst11=4;
@@ -144,9 +127,6 @@ function create_G1_3(){
 	let comp2 = new Component();
 
 	var group = create_G1_4(); 
-	
-	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
 
 	var hCil3= 1 , bCil3=1;
 	var hEst8=6;
@@ -171,9 +151,6 @@ function create_G1_2(){
 	let comp2 = new Component();
 
 	var group = create_G1_3(); 
-	
-	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
 
 	var hEst5 = 6;
 	var hEst6 = 1;
@@ -198,9 +175,6 @@ function create_G1_1()
 	let comp2 = new Component();
 
 	var group = create_G1_2(); 
-	
-	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
 
 	let wCub2 = 1, hCub2 = 1, dCub2 = 1;
 	let hEst3= 8;
@@ -223,8 +197,7 @@ function create_G1()
 
 	var group = create_G1_1(); 
 	
-	let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-	let estMaterial = new THREE.MeshBasicMaterial({color: 0xFFFF00});
+	
 
 	var hCil1= 2 , bCil1=1;
 	var hEst1=6;
@@ -264,11 +237,11 @@ function createScene() {
 	scene = new THREE.Scene();
 
 	scene.add(new THREE.AxesHelper(20));
-	/* so para clarificar :
+/* 	so para clarificar :
 	eixo cor vermelha = eixo dos xx
-	eixo cor azul = eixo dos yy
-	eixo cor verde = eixo dos zz */
-	mobile = new Mobile(10,10,10);
+	eixo cor azul = eixo dos zz
+	eixo cor verde = eixo dos yy
+ */	mobile = new Mobile(10,10,10);
 	createMobile();
 	scene.add(mobile);	
 }
@@ -277,34 +250,52 @@ function animate() {
 	'use strict';
 
 	// Mobile animation functions
-	var speed = 2;
-	// rotates whole mobile
-/*	if (mobile.getBranchOneRotation() != 0) {
-		if (mobile.branchOneRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
-			mobile.rotateBranch1z(0);
-		else if (mobile.branchOneRotation == 2)
-			mobile.rotateBranch1z(-0);
-	}
+	var speed = 5;
+	let time = clock.getDelta();
+	let angSpeed = 5;
 
-	//girar branch2
-	if (mobile.getBranchTwoRotation() != 0) {
-		if (mobile.branchTwoRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
-			mobile.rotateBranchTwo(0);
-		else if (mobile.branchTwoRotation == 2)
-			mobile.rotateBranchTwo(-0);
-	}
-
-	//girar branch3
-	if (mobile.getBranchThreeRotation() != 0) {
-		if (mobile.branchThreeRotation == 1)  //1 -> girar para um lado e 2-> girar para outro
-			mobile.rotateBranchThree(0);
-		else if (mobile.branchThreeRotation == 2)
-			mobile.rotateBranchThree(-0);
-
-	}*/
-
-	//mover o mobile
 	
+	//rotate B1
+	if (mobile.getRotationOne() === "rotateB1P") {
+		mobile.rotateBranchOneZ(angSpeed*time);
+	}
+
+	if (mobile.getRotationOne() === "rotateB1N") {
+		mobile.rotateBranchOneZ(-angSpeed*time);
+	}
+
+	//rotate B2
+	if (mobile.getRotationTwo() === "rotateB2P") {
+		mobile.rotateBranchTwoZ(angSpeed*time);
+	}
+
+	if (mobile.getRotationTwo() === "rotateB2N") {
+		mobile.rotateBranchTwoZ(-angSpeed*time);
+	}
+
+	//rotate B3
+	if (mobile.getRotationThree() === "rotateB3P") {
+		mobile.rotateBranchThreeZ(angSpeed*time);
+	}
+
+	if (mobile.getRotationThree() === "rotateB3N") {
+		mobile.rotateBranchThreeZ(-angSpeed*time);
+	}
+ 
+	//mover o mobile
+		if (mobile.getMotionX() === "forward") {
+			mobile.moveForward(time * speed);
+		}
+		if (mobile.getMotionX() === "backward") {
+			mobile.moveBackward(time * speed);
+		}
+		if (mobile.getMotionY() === "right") {
+			mobile.moveRight(time * speed);
+		}
+		if (mobile.getMotionY() === "left") {
+			mobile.moveLeft(time * speed);
+		}
+
 	requestAnimationFrame(animate);
 	renderer.render(scene, camera);
 }
@@ -338,52 +329,85 @@ function onKeyDown(e) {
 			break;
 
 		case "4":
-			mobile.toggleWireframe();
+
+			// mobile.toggleWireframe(); TODO: Use flags
+			objMaterial.wireframe = !objMaterial.wireframe;
+			estMaterial.wireframe = !objMaterial.wireframe;
 			break;
 
 		case "W":
-		case "w":   /*Rodar v1 num sentido*/
-			//mobile.rotateBranchOne(0);
+		case "w":
+			mobile.setRotation("rotateB1P");   
 			break;
 
-		case "Q":   /*rodar v1 noutro sentido*/
+		case "Q": 
 		case "q":
-			mobile.rotateBranch1Z(-0);
+			mobile.setRotation("rotateB1N");
 			break;
 
 		case "A":
 		case "a":
-			mobile.rotateBranch2Z(0);
+			mobile.setRotation("rotateB2P");
 			break;
 
 		case "D":
 		case "d":
-			mobile.rotateBranch2Z(-0);
+			mobile.setRotation("rotateB2N");
 
 		case "Z":
 		case "z":
-			mobile.rotateBranch3Z(0);
+			mobile.setRotation("rotateB3P");
 			break;
 
-		case "S":
-		case "s":
-			mobile.rotateBranch3Z(-0);
+		case "C":
+		case "c":
+			mobile.setRotation("rotateB3N");
 			break;
 
 		case "ArrowUp":
-			mobile.setMobileMoving(1);
+			mobile.setMotionX("forward");
 			break;
 
 		case "ArrowDown":
-			mobile.setMobileMoving(2);
+			mobile.setMotionX("backward");
 			break;
 
 		case "ArrowRight":
-			mobile.setBaseMovement(1);
+			mobile.setMotionY("right");
 			break;
 
 		case "ArrowLeft":
-			mobile.setBaseMovement(1);
+			mobile.setMotionY("left");
+			break;
+	}
+}
+function onKeyUp(e) {
+	switch (e.key) {
+		case "ArrowUp":
+		case "ArrowDown":
+			mobile.setMotionX("stop");
+			break;
+		case "ArrowRight":
+		case "ArrowLeft":
+			mobile.setMotionY("stop");
+			break;
+		case "Q":
+		case "q":
+		case "W":
+		case "w":
+			mobile.setRotation("stopB1");
+			break;
+		case "A":
+		case "a":
+		case "D":
+		case "d":
+			mobile.setRotation("stopB2");
+			break;
+		case "Z":
+		case "z":
+		case "C":
+		case "c":
+			mobile.setRotation("stopB3");
 			break;
 	}
 }
@@ -404,4 +428,5 @@ function __init__() {
 
 	window.addEventListener("resize", onResize)
 	window.addEventListener("keydown", onKeyDown);
+	window.addEventListener("keyup", onKeyUp);
 }

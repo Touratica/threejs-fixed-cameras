@@ -1,16 +1,21 @@
 'use strict';
 class Component extends THREE.Object3D {
+    material;
+
     addCuboid(material, x, y, z, w, h, d) {
         let geometry = new THREE.BoxGeometry(w, h, d);
         let mesh = new THREE.Mesh(geometry, material);
+        this.material = material;
+        this.material.wireframe=true;
         this.add(mesh);
-        //mesh.rotateX(Math.PI / 2);
         mesh.position.set(x, y, z);
     }
 
     addCylinderVertical(material, x, y, z, base, height) {
         let geometry = new THREE.CylinderGeometry(base / 2, base / 2, height, 64, 1);
         let mesh= new THREE.Mesh(geometry, material);
+        this.material = material;
+        this.material.wireframe=true;
         this.add(mesh);
         mesh.rotateX(Math.PI / 2);
         mesh.position.set(x, y, z);
@@ -19,8 +24,9 @@ class Component extends THREE.Object3D {
     addCylinderHorizontal(material, x, y, z, base, height) {
         let geometry = new THREE.CylinderGeometry(base / 2, base / 2, height, 64, 1);
         let mesh= new THREE.Mesh(geometry, material);
+        this.material = material;
+        this.material.wireframe=true;
         this.add(mesh);
-        //mesh.rotateX(Math.PI / 2);
         mesh.position.set(x, y, z);
     }
 
@@ -30,6 +36,6 @@ class Component extends THREE.Object3D {
     }
 
     toggleWireframe() {
-        this.material.wireframe = !this.material.wireframe;
+        // this.material.wireframe = !this.material.wireframe;
     }
 }
