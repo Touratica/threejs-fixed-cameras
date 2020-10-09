@@ -226,7 +226,7 @@ function createScene() {
 	scene = new THREE.Scene();
 
 	// Adds axes to the scene: x-axis is red, y-axis is green, z-axis is blue
-	scene.add(new THREE.AxesHelper(20));
+	//scene.add(new THREE.AxesHelper(20));
 
  	mobile = new Mobile(0, 0, 10);
 	createMobile();
