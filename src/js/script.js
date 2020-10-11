@@ -4,7 +4,7 @@ let scene, renderer;
 let clock = new THREE.Clock();
 let mobile;
 let wireThickness = .1;
-let cameraRatio = 25;
+let cameraRatio = 24;
 
 // Sets the z-axis as the top pointing one
 THREE.Object3D.DefaultUp.set(0, 0, 1);
@@ -208,6 +208,13 @@ function createMobile() {
 }
 
 function createCamera(x, y, z) {
+	// Adjusts camera ratio so the mobile is totally visible in its starting position
+	if (window.innerWidth / window.innerHeight > 2.64) {
+		cameraRatio = window.innerHeight / 25;
+	}
+	else {
+		cameraRatio = window.innerWidth / 60;
+	}
 	camera = new THREE.OrthographicCamera(window.innerWidth / -(2 * cameraRatio),
 		window.innerWidth / (2 * cameraRatio), window.innerHeight / (2 * cameraRatio),
 		window.innerHeight / -(2 * cameraRatio), 0, 1000);
@@ -215,7 +222,6 @@ function createCamera(x, y, z) {
 	camera.position.y = y;
 	camera.position.z = z;
 	camera.lookAt(scene.position);
-	onResize();
 	return camera;
 }
 
@@ -282,7 +288,15 @@ function animate() {
 
 function onResize() {
 	renderer.setSize(window.innerWidth, window.innerHeight);
+
+	// Adjusts camera ratio so the mobile would be totally visible in its starting position
 	if (window.innerHeight > 0 && window.innerWidth > 0) {
+		if (window.innerWidth / window.innerHeight > 2.64) {
+			cameraRatio = window.innerHeight / 25;
+		}
+		else {
+			cameraRatio = window.innerWidth / 60;
+		}
 		camera.left = window.innerWidth / -(2 * cameraRatio);
 		camera.right = window.innerWidth / (2 * cameraRatio);
 		camera.top = window.innerHeight / (2 * cameraRatio);
