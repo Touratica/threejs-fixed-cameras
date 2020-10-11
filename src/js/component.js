@@ -32,10 +32,4 @@ class Component extends THREE.Object3D {
         this.add(comp);
         comp.position.set(x, y, z);
     }
-
-/*
-    toggleWireframe() {
-        this.material.wireframe = !this.material.wireframe;
-    }
-*/
 }

@@ -12,8 +12,6 @@ THREE.Object3D.DefaultUp.set(0, 0, 1);
 let objMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000, wireframe: true});
 let estMaterial = new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true});
 
-// TODO: Confirm if objects' dimensions are according to specifications
-
 function create_G3() {
 	let comp1 = new Component();
 	let comp2 = new Component();
@@ -24,8 +22,8 @@ function create_G3() {
 	let wCub4 = 1, hCub4 = 1, dCub4 = 1;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst17);
-	comp1.addCylinderVertical(objMaterial, 0, - hEst17/2 - bCil6 / 2, 0, bCil6, hCil6);
-	comp1.addCuboid(objMaterial, 0, hEst17/2 + wCub4 / 2, 0, wCub4, hCub4, dCub4);
+	comp1.addCylinderVertical(objMaterial, 0, - hEst17 / 2 - bCil6 / 2, 0, bCil6, hCil6);
+	comp1.addCuboid(objMaterial, 0, hEst17 / 2 + wCub4 / 2, 0, wCub4, hCub4, dCub4);
 
 	comp2.addCylinderVertical(estMaterial, 0, 0, hV3 / -2, wireThickness, hV3);
 	comp2.addComponent(comp1, 0, 0, -hV3);
@@ -46,7 +44,7 @@ function create_G2_2(){
 	let bCil7 = 2, hCil7 = 3;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst16);
-	comp1.addCylinderVertical(objMaterial, 0, hEst16/2 + bCil7 / 2, 0, bCil7, hCil7);
+	comp1.addCylinderVertical(objMaterial, 0, hEst16 / 2 + bCil7 / 2, 0, bCil7, hCil7);
 	comp1.addComponent(group, 0, -hEst16 / 2 + wireThickness / 2 , 0);
 
 	comp2.addCylinderVertical(estMaterial, 0, 0, hEst15 / -2, wireThickness, hEst15);
@@ -66,11 +64,11 @@ function create_G2_1(){
 	let hEst13 = 2;
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst14);
-	comp1.addCylinderHorizontal(objMaterial, 0,- hEst14/2 - bCil5/ 2, 0, bCil5, hCil5);
-	comp1.addComponent(group, 0, hEst14/2 - wireThickness / 2 , 0);
+	comp1.addCylinderHorizontal(objMaterial, 0,- hEst14 / 2 - bCil5/ 2, 0, bCil5, hCil5);
+	comp1.addComponent(group, 0, hEst14 / 2 - wireThickness / 2 , 0);
 
 	comp2.addCylinderVertical(estMaterial, 0, 0, hEst13 / -2, wireThickness, hEst13);
-	comp2.addComponent(comp1, 0, (1/18)*hEst14, -hEst13);
+	comp2.addComponent(comp1, 0, (1 / 18) * hEst14, -hEst13);
 
 	return comp2;
 }
@@ -81,22 +79,21 @@ function create_G2() {
 
 	let group = create_G2_1();
 
-	let dCub3 = 1, hCub3= 1 , wCub3=1;
+	let dCub3 = 1, hCub3 = 1 , wCub3 = 1;
 	let hEst12 = 5;
 	let hV2 = 2;
 
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst12);
-	comp1.addCuboid(objMaterial, 0,- hEst12/2 - dCub3/ 2, 0, wCub3, hCub3,dCub3);
-	comp1.addComponent(group, 0, hEst12/2 - wireThickness / 2 , 0);
+	comp1.addCuboid(objMaterial, 0,- hEst12 / 2 - dCub3/ 2, 0, wCub3, hCub3, dCub3);
+	comp1.addComponent(group, 0, hEst12 / 2 - wireThickness / 2 , 0);
 
 	comp2.addCylinderVertical(estMaterial, 0, 0, hV2 / -2, wireThickness, hV2);
-	comp2.addComponent(comp1, 0, (-1/10)*hEst12, -hV2);
+	comp2.addComponent(comp1, 0, (-1 / 10) * hEst12, -hV2);
 
 	mobile.setBranchTwo(comp2);
 
 	return mobile.branchTwo();
-
 }
 
 function create_G1_4(){
@@ -105,17 +102,17 @@ function create_G1_4(){
 
 	let group = create_G2();
 
-	let hCil4 = 1 , bCil4= 1;
+	let hCil4 = 1 , bCil4 = 1;
 	let hEst11 = 4;
 	let hEst10 = 1;
 
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst11);
-	comp1.addCylinderHorizontal(objMaterial, 0,- hEst11/2 - bCil4/ 2, 0, bCil4, hCil4);
-	comp1.addComponent(group, 0, hEst11/2 - wireThickness / 2 , 0);
+	comp1.addCylinderHorizontal(objMaterial, 0,-hEst11 / 2 - bCil4 / 2, 0, bCil4, hCil4);
+	comp1.addComponent(group, 0, hEst11 / 2 - wireThickness / 2 , 0);
 
 	comp2.addCylinderVertical(estMaterial, 0, 0, hEst10 / -2, wireThickness, hEst10);
-	comp2.addComponent(comp1, 0, (1/4)*hEst11, -hEst10);
+	comp2.addComponent(comp1, 0, (1 / 4) * hEst11, -hEst10);
 
 	return comp2;
 }
@@ -133,11 +130,11 @@ function create_G1_3(){
 
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst8);
 	comp1.addCylinderVertical(estMaterial,0,hEst8/-2 + wireThickness/2, -hEst9 / 2, wireThickness, hEst9);
-	comp1.addCylinderVertical(objMaterial, 0, -hEst8/2 + wireThickness / 2, -hEst9 - hCil3/2,bCil3,hCil3);
-	comp1.addComponent(group, 0, hEst8/2 - wireThickness / 2 , 0);
+	comp1.addCylinderVertical(objMaterial, 0, -hEst8 / 2 + wireThickness / 2, -hEst9 - hCil3 / 2, bCil3, hCil3);
+	comp1.addComponent(group, 0, hEst8 / 2 - wireThickness / 2 , 0);
 
 	comp2.addCylinderVertical(estMaterial, 0, 0, hEst7 / -2, wireThickness, hEst7);
-	comp2.addComponent(comp1, 0, (1/6)*hEst8, -hEst7);
+	comp2.addComponent(comp1, 0, (1 / 6) * hEst8, -hEst7);
 
 	return comp2;
 }
@@ -156,11 +153,11 @@ function create_G1_2(){
 	comp1.addCylinderHorizontal(estMaterial, 0, 0, 0, wireThickness, hEst5);
 
 	comp1.addCylinderVertical(objMaterial, 0, -hEst5 / 2 + wireThickness / 2, -hCil2 / 2 - hEst6, bCil2, hCil2);
-	comp1.addCylinderVertical(estMaterial, 0, -hEst5 / 2 + wireThickness / 2, -hEst6 / 2, wireThickness , hEst6);
+	comp1.addCylinderVertical(estMaterial, 0, -hEst5 / 2 + wireThickness / 2, -hEst6 / 2, wireThickness, hEst6);
 	comp1.addComponent(group, 0, hEst5 / 2 - wireThickness / 2 , 0);
 
-	comp2.addCylinderVertical(estMaterial, 0, 0, -hEst4/2, wireThickness, hEst4);
-	comp2.addComponent(comp1, 0, (-2/6)*hEst5, -hEst4);
+	comp2.addCylinderVertical(estMaterial, 0, 0, -hEst4 / 2, wireThickness, hEst4);
+	comp2.addComponent(comp1, 0, (-2 / 6) * hEst5, -hEst4);
 
 	return comp2;
 }
@@ -211,9 +208,9 @@ function createMobile() {
 }
 
 function createCamera(x, y, z) {
-
-	camera = new THREE.OrthographicCamera(window.innerWidth / -(2 * cameraRatio), window.innerWidth / (2 * cameraRatio)
-		, window.innerHeight / (2 * cameraRatio),window.innerHeight / -(2 * cameraRatio), 0, 1000);
+	camera = new THREE.OrthographicCamera(window.innerWidth / -(2 * cameraRatio),
+		window.innerWidth / (2 * cameraRatio), window.innerHeight / (2 * cameraRatio),
+		window.innerHeight / -(2 * cameraRatio), 0, 1000);
 	camera.position.x = x;
 	camera.position.y = y;
 	camera.position.z = z;
@@ -226,7 +223,7 @@ function createScene() {
 	scene = new THREE.Scene();
 
 	// Adds axes to the scene: x-axis is red, y-axis is green, z-axis is blue
-	//scene.add(new THREE.AxesHelper(20));
+	// scene.add(new THREE.AxesHelper(20));
 
  	mobile = new Mobile(0, 0, 10);
 	createMobile();
@@ -312,7 +309,6 @@ function onKeyDown(e) {
 			break;
 
 		case "4":
-			// mobile.toggleWireframe(); TODO: Use function?
 			objMaterial.wireframe = !objMaterial.wireframe;
 			estMaterial.wireframe = !estMaterial.wireframe;
 			break;
