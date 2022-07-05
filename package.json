@@ -1,13 +1,13 @@
 {
   "name": "threejs-fixed-cameras",
   "version": "1.0.0",
-  "description": "",
+  "description": "A project developed around the Three.js 3D library, exploring the concepts basic geometries and fixed cameras.",
   "private": true,
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack serve --open --config webpack.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
   "repository": {
@@ -21,14 +21,14 @@
   },
   "homepage": "https://github.com/Touratica/threejs-fixed-cameras#readme",
   "dependencies": {
-    "three": "0.121.1"
+    "three": "^0.142.0"
   },
   "devDependencies": {
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "prettier": "2.7.1",
+    "prettier": "^2.7.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0",
